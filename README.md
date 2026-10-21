@@ -206,3 +206,6 @@ Static site (no build step). Open `index.html` in a browser, or upload the folde
 - 2026-10-21 — Header: Skills link removed on all pages; logo visible on phones too (links home).
 - 2026-10-21 — Footer glow (orb) added to all three case studies in their brand color.
 - 2026-10-21 — GitHub-ready package: backups/portfolio-github/ (+ zip) with only the files the 4 pages use; CV PDF still missing.
+- 2026-10-21 — CV PDF added (Download CV + footer CV buttons work); email subject "Portfolio inquiry" → "Contact".
+- 2026-10-21 — Home: Work section now before Skills.
+- 2026-10-21 — Hero buttons: See my work · Skills · Contact information (Download CV removed from hero; CV stays in footer).
