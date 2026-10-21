@@ -1,0 +1,208 @@
+# Portfolio site — J. Reyna
+
+Static site (no build step). Open `index.html` in a browser, or upload the folder to any static host.
+
+## Files
+- `index.html` — content and structure (hero, skills, work cards, footer contact)
+- `project-1.html` … `project-4.html` — case-study pages (generated from one layout; edit each by hand)
+- `styles.css` — styling; tokens from `DESIGN-2.md` live in `:root`
+- `script.js` — header bubble-on-scroll behavior
+- `portfolio.zip` — the same files, zipped for download/sharing
+
+## Editing checklist (placeholders to replace)
+1. Name / role: search `J. Reyna` in `index.html`.
+2. Hero intro line: `.lead` paragraph in the hero.
+3. Skills: three `.skill-group` blocks.
+4. Work cards: four `<article class="card">` blocks. **Max 5 tags per card.**
+   To show real images, replace the `<span class="thumb-label">` inside `.thumb` with `<img src="images/yourfile.jpg" alt="...">`.
+5. Contact links: footer `.contact-icons` — only Email is real (`rgchuy@gmail.com`); LinkedIn links to the real profile; GitHub, Instagram and Dribbble were removed.
+
+## Design notes
+- Palette: white, black, `#f6f6f6`, `#878787`; green `#189e48` only for the availability dot.
+- Fonts load from Google Fonts (Cormorant Garamond, DM Sans, Inter) as substitutes for the specified Rhymes Text / Saans / Satoshi. Falls back to system fonts offline.
+- Header turns into a floating pill ("bubble") after 40px of scroll.
+
+## Change log
+- 2026-10-15 — Initial build from `DESIGN-2.md` and the requested page structure.
+- 2026-10-15 — Added project case-study pages (title, image, story left, services+tools right, more projects, footer).
+- 2026-10-15 — Updated skills section (Design / Strategy / AI & Technical Skills).
+- 2026-10-15 — Rewrote hero intro line.
+- 2026-10-15 — Home cards 1–2 set to Players Redesign / Download Queue (project pages still placeholder).
+- 2026-10-15 — Added grow-on-hover for project images.
+- 2026-10-15 — Added Project One image (images/project-1.webp) to home card, project-1 page and more-project cards.
+- 2026-10-15 — Home card for Project One now uses images/project-1-cover.webp; project-1 page keeps images/project-1.webp.
+- 2026-10-15 — Project One page: replaced "Long story short" text with the real Players Redesign story.
+- 2026-10-15 — Hero intro: "built the ability to identify" → "helped companies identify".
+- 2026-10-15 — Project pages: faded grid-paper background behind "Long story short" (ref. bajgartoffice.com/studies).
+- 2026-10-15 — Scroll reveal animations (pop for images/blocks, slide for text/lists), ref. bajgartoffice.com/studies.
+- 2026-10-15 — Project One: Before & after section (desktop: before · what changed · after; mobile: single image with Before/After toggle that auto-flips to After on first view). Images are placeholders.
+- 2026-10-15 — Before & after (desktop): two large columns; "What changed" moved below the images.
+- 2026-10-15 — Before & after: added real images for Single-screen layout (now first row).
+- 2026-10-15 — Before & after (mobile): switch is now a 1.4s left-to-right wipe instead of a crossfade.
+- 2026-10-15 — Before & after: replaced "Mobile experience" placeholder with "Real color theme personalization" (mobile images).
+- 2026-10-15 — Color theme row now uses the animated assets (old-colors.gif → new-themes-gradient.webp).
+- 2026-10-15 — Betting flow row: After = assets/1bettor-columns.gif (fit inside, not cropped). Before still placeholder.
+- 2026-10-15 — Replaced Betting flow before/after with a full-width highlight "A simpler way to place bets" (columns GIF + caption).
+- 2026-10-15 — Project One: headline "From 12 steps and a dead end to one flexible screen" + "The old process" step map (12 steps, stats) above the columns GIF.
+- 2026-10-15 — Old process (mobile): compact 2-column chips, number inline.
+- 2026-10-15 — Old process subtitle rewritten in third person.
+- 2026-10-15 — Project One: "What was removed and where it went" (3 cards with mini old-UI visuals; mobile = tilted swipeable card stack). Copy in third person.
+- 2026-10-15 — Removed cards: old-UI visuals no longer rotated (only the stacked cards tilt on mobile).
+- 2026-10-15 — Old process (desktop): compact chips with inline numbers, smaller stats.
+- 2026-10-15 — Project One renamed "Players Redesign": new intro, Services (research → theming) and Tools (Figma, FigJam). More-work cards updated.
+- 2026-10-15 — Home card Players Redesign tags aligned with project services.
+- 2026-10-15 — Grainy gradient orbs (ref. Cornelius Point) on Players Redesign in red via --project-color.
+- 2026-10-15 — Orbs softened (opacity .35).
+- 2026-10-15 — Header: transparent at the top; frosted-glass (blur + saturate) bubble on scroll.
+- 2026-10-15 — Header glass tinted with the project color (red) on project pages.
+- 2026-10-15 — Home: blue grainy orbs at the top (header glass tinted blue too).
+- 2026-10-15 — Home footer: large blue orb behind "Let's work together".
+- 2026-10-15 — Footer orb anchored to the bottom (no visible cut at the top).
+- 2026-10-15 — Orbs: gradients sized to the circle (no square clipping); footer orb centered on the page bottom (half circle).
+- 2026-10-15 — Client described as a pay-per-head sportsbook software for bookies (intro, meta, Long story short).
+- 2026-10-15 — Long story short: rewrote paragraphs 1–2 (per-agent betting sites; update need moved to paragraph 2).
+- 2026-10-15 — Subtle shadow on images; click-to-enlarge lightbox on project images (2nd click = full size).
+- 2026-10-15 — Single-screen layout: What changed rewritten as Before/After.
+- 2026-10-15 — What was removed: wizard and Return/Clear/Continue cards copy clarified (progress lost, betslip explained).
+- 2026-10-15 — Color theme row: What changed reduced to one Before and one After line.
+- 2026-10-16 — GIF caption rewritten for portfolio tone.
+- 2026-10-16 — Video plays only when in view. Proposal B for color themes: drag-to-compare slider (below the toggle version).
+- 2026-10-16 — Color theme: kept the drag slider, removed the toggle version.
+- 2026-10-16 — Single-screen layout converted to the drag slider (full width).
+- 2026-10-16 — Old process stats regrouped: Old process (12 steps, 4 Continue screens) → New design (6 steps, 1 screen).
+- 2026-10-16 — Stats: "steps to place a bet"; Old/New groups span the full width.
+- 2026-10-16 — Long story short shortened to 3 paragraphs.
+- 2026-10-16 — "What was removed" moved after the video caption.
+- 2026-10-16 — Project One renamed "Rethinking the Betting Experience" (page, tab title, home card, more-work cards).
+- 2026-10-16 — Project intro rewritten as a short preview of the case study.
+- 2026-10-16 — Project 2 built as the TREBEL Download Queue case study (12 sections, TREBEL yellow/black style, dot grid + timeline animations); home and more-work cards updated.
+- 2026-10-16 — Project 2: role Senior UX/UI Designer · Design Lead; privacy-safe research illustrations + session counts (placeholders); media slots in Solution; results add ≈25/100 estimate and ad-model note.
+- 2026-10-16 — Project 2: portfolio typography leads (serif display headings, DM Sans numbers); Montserrat only for TREBEL logo and app screens. Solution heading renamed so "Download Queue" appears once.
+- 2026-10-16 — Home card for Download Queue: temporary cover (download screen) and new tags.
+- 2026-10-16 — Project 2 renamed "Rethinking the Music Download Experience" (page + home + more-work); TREBEL badge → soft label. Softer pass: thin low-contrast strokes, pale yellow washes, no solid black blocks.
+- 2026-10-16 — Client + Year added to Long story short on all projects. Project 2: removed top label and Role/Market/Tools/Year row; new title "Queue the music, download once" and rewritten intro.
+- 2026-10-16 — Project 2 Long story short rewritten from the user's draft.
+- 2026-10-16 — Project 2 context features: no frame, images fade out, captions below; 3-up on mobile.
+- 2026-10-16 — Reverted the frameless/fade features; new 1529×2000 TREBEL ads shown uncropped in cards; 3-up on mobile.
+- 2026-10-16 — Project 2: User section moved right after The blind spot.
+- 2026-10-16 — Project 2: Google Forms added to tools and interviews card; 'no phone plan' corrected to low-GB data plans everywhere; interview stat now 10 min for some users.
+- 2026-10-16 — Insight bars and Imagine line now use the 10-minute discovery.
+- 2026-10-16 — Project 2 flows compacted (desktop smaller steps; mobile 2×2 numbered grid).
+- 2026-10-16 — Project 2: Problem statement section removed.
+- 2026-10-18 — Home hero: "a Senior Product Designer"; intro rewritten.
+- 2026-10-18 — Skills updated (Interaction Design, Adobe Photoshop/Illustrator; Claude removed; AI list reordered).
+- 2026-10-18 — Project 2: real Download Queue screen recording (trebel-download-p2-library.mp4) added at the top of The solution; plays when in view.
+- 2026-10-18 — Project 2: removed the KPI tiles under the hero image.
+- 2026-10-18 — Project 2: new 'The download climb' mountain illustration section (before The blind spot).
+- 2026-10-18 — Mountain figures changed to restroom-style person pictograms.
+- 2026-10-18 — Mountain: halftone dot texture; people are minimal halftone icons (standing / arms raised only).
+- 2026-10-18 — Mountain people: upright, soft gray solid fill.
+- 2026-10-18 — Project Three: 'Coming soon' cover (images/coming-soon.svg) on home, project 3 hero and all more-work cards.
+- 2026-10-18 — Project Four removed (home card, more-work cards, project-4.html).
+- 2026-10-18 — P2: 25/100 marked as real CleverTap data. P1: new Outcome section (pilot → learning curve → all agents; default & preferred; more time on site). LinkedIn link added; Instagram and Dribbble removed.
+- 2026-10-18 — Project 3 built: 'Growing TREBEL, one feature at a time' (product UI, lighter format: feature strip + 4 feature rows). Placeholder images from TREBEL refs. Cards updated.
+- 2026-10-18 — P1 Outcome reduced to 3 benefits.
+- 2026-10-18 — P1: 'Decision fatigue' section with an interactive betslip (bet types, picks on/off, remove/restore; auto-demo until the visitor clicks).
+- 2026-10-18 — Betslip: tabs separated on top, body height locked (no page jumps), colors/sizes/Rajdhani type closer to the real UI, select-all/free-play/accept-odds rows.
+- 2026-10-18 — Betslip: only bet type tabs are clickable; picks/wager/footer are a display-only preview that adapts to the selected type.
+- 2026-10-18 — Betslip rebuilt as 2 cards: bet-type tabs (clickable, auto-cycling) + screenshot of the betslip content (images/betslip-straights.png; other types reuse it until provided).
+- 2026-10-18 — Betslip demo: 5 bet types incl. Round Robins (scrollable tabs); display-only panels rebuilt from real screens with a $10 wager and calculated risk/win; fixed height.
+- 2026-10-18 — Decision fatigue: betslip demo replaced by assets/1bettor-bet-types-phone.webp; title aligned to the top; demo code removed.
+- Decision fatigue copy: eyebrow 'Minimize decision fatigue', title 'Easy modification, all in one place', paragraphs rewritten.
+- Added Round Robins to the bet types tab list in project 1.
+- 2026-10-19 — Project 2 Solution: "Final screens" placeholder replaced with the phones loop video (assets/trebel-final-screens-loop.mp4, plays in view); Explorations slot now full width.
+- 2026-10-19 — Phones loop caption rewritten: shows where the add-to-download-list icon was added (album covers, album tracks, song page).
+- 2026-10-19 — Project 2 Solution ("Select first, download once") now shows only the two videos; coded phone mockups and Explorations placeholder removed.
+- 2026-10-19 — Solution videos swapped: phones loop first, Download Queue flow second.
+- 2026-10-19 — Phones loop caption rewritten in a more professional tone.
+- 2026-10-19 — What is TREBEL: removed the 690M premium users stat (stats row now 3 columns) and the 9 offices item.
+- 2026-10-19 — Blind spot: "US" → "USA"; The reality now mentions prepaid plans where each top-up buys only a few GB.
+- 2026-10-19 — Research card "Early users from both ends": prepaid plans / small credit top-ups wording.
+- 2026-10-19 — Real color theme personalization: drag slider replaced by assets/1bettor-themes-before-after.mp4 (plays in view).
+- 2026-10-19 — Color theme video replaced with the updated 1bettor-themes-before-after.mp4.
+- 2026-10-19 — Project 1: new "Navigation menu reorganization" row (before = old burger menu image, after = menu video that plays once, holds on the last frame, Replay button).
+- 2026-10-19 — Navigation menu reorganization: now uses 1bettor-menus-open/close.mp4 (before + user panel + bottom-bar menu); opens once in view, then an Open/Close menus button toggles. Old menu-new video/before PNG no longer used.
+- 2026-10-19 — Project 1: new "Platform refinements / Easier to navigate, easier to brand" heading; navigation menu row moved above color themes; both rows now use one short paragraph instead of Before/After lists.
+- 2026-10-19 — Platform refinements order: navigation menu → Easy modification (betslip) → color themes. Menu and theme paragraphs rewritten (reorganized by function, profile panel; customer service requests, no alerts/warnings).
+- 2026-10-19 — Navigation menu paragraph tightened (no item list, clear place per category).
+- 2026-10-19 — Platform refinements: new first row "Header reorganization" (assets/1bettor-header-zoom.mp4).
+- 2026-10-19 — Header reorganization paragraph shortened (2 rows → 1, benefits only).
+- 2026-10-19 — Header reorganization paragraph: more formal tone.
+- 2026-10-19 — Header reorganization video replaced with the updated 1bettor-header-zoom.mp4.
+- 2026-10-20 — Unnecessary line breaks fixed: .process-sub 560→960px (P1 subtitles), .tb-assume 900→960px (P2 quote), .tb-company p 340→620px (P2). Checked all pages at 1440/1280.
+- 2026-10-20 — Header reorganization video: frame shadow removed so it blends with the page.
+- 2026-10-20 — Easy modification mockup replaced with updated assets/1bettor-bet-types-phone.webp.
+- 2026-10-20 — P2 The problem: stat/dots row now uses the same 1fr 1fr / 20px grid as the goal cards, so text and dots align with Company goal and Success metric.
+- 2026-10-20 — P2 intro: "download queue" → "download list".
+- 2026-10-20 — Home TREBEL card subtitle: "Download Queue" → "Download experience redesign".
+- 2026-10-20 — P3 story: "same dark interface with yellow accents… from day one" rewritten.
+- 2026-10-20 — Project 3 rebuilt as "Bringing podcasts to TREBEL": new intro + story, Key flows (01 home, 02 filtering/sorting, 03 library rebuild), Saving space, Podcast player — yellow phone/media placeholders (.p3-ph/.p3-slot). Cards renamed on index, P1, P2.
+- 2026-10-20 — P3 Key flow 01: real screens in the yellow phones (Popular podcasts; Hyphenated show page scrolls with fixed header to the ad banner and fixed tab bar).
+- 2026-10-20 — P3: all phones now use the yellow iPhone frame; home-indicator strip added under the tab bar (episode, library, podcasts home, show page, placeholders).
+- 2026-10-20 — iPhone home indicator pill dimmed to TREBEL tab-label gray (#9d9fa0).
+- 2026-10-20 — P3: dark showcase (player + show page) is now the first project image; episode/player/library trio moved into 01 "Podcast integration" (replaces the Popular podcasts + Hyphenated phones).
+- 2026-10-20 — P3 Key flow 03 retitled "One library for every kind of media"; text covers music, videos and podcasts.
+- 2026-10-20 — P3 intro: second "Podcasts" → "The format".
+- 2026-10-20 — P3 01 text: "woven into" → "integrated into the existing app structure".
+- 2026-10-20 — P3 01 text: Library clause simplified to "brings everything together in one place".
+- 2026-10-20 — P3 02 title: "Details that give a better experience".
+- 2026-10-20 — P3 03 caption: "31 library explorations" (removed "ending on the final design").
+- 2026-10-20 — P3 03: Library state phones filled with My shows / Downloaded / Played (scrolling, fixed header to ad banner + tab bar).
+- 2026-10-20 — P3: phones beside copy now size to their column (fixed overflow of Saving space phones at ~980px).
+- 2026-10-20 — P3 03 library phones: static (no scroll) with captions My shows / Downloaded / Played.
+- 2026-10-20 — P3 Saving space: left = Downloaded library scrolled to "Go to podcast settings" (fixed header incl. library squares), right = Delete episodes automatically setting.
+- 2026-10-20 — P3 Saving space paragraph rewritten to match the library prompt + Settings toggle (48 h).
+- 2026-10-20 — P2 Solution video caption: download all or select individual songs.
+- 2026-10-20 — P2 Solution caption shortened.
+- 2026-10-20 — Contact email changed to rgchuy@gmail.com on all pages.
+- 2026-10-20 — P2 compact pass (desktop): smaller 19/100 and capped dots, shorter mountain, smaller blind-spot quote and insight statement, thinner timeline bars, tighter research cards, Results numbers below title size. ~810px less height at 1440.
+- 2026-10-20 — Home: project 3 card shows a live mini showcase (player + scrolling show page video); project 1 cover drifts slowly (16s, off with reduced motion).
+- 2026-10-20 — Project 1 image (home card + case-study hero): slow camera move (12s) + light sheen (7s); replaces the old drift on the card.
+- 2026-10-20 — Project 1 image: sheen and zoom removed; background glows now drift in a slow loop (SVG overlay with screens masked out).
+- 2026-10-20 — Project 1 image: desktop and phone now separate layers that wiggle/tilt (<2°) in a loop over a blurred base; glows kept.
+- 2026-10-20 — Project 1 image: background brightened (base brightness 1.45, stronger glows) for more contrast with the screens.
+- 2026-10-20 — Other projects cards now use the animated home thumbnails (P1 wiggle layers, P2 download video 4:3, P3 mini showcase).
+- 2026-10-20 — Home hero: the break after "brings" only applies ≥1240px; below that the heading flows without a gap.
+- 2026-10-20 — Email buttons: mailto with subject + copies rgchuy@gmail.com and shows an "Email copied" message (works without a mail app).
+- 2026-10-20 — GitHub removed from the footer on all pages (Email + LinkedIn only).
+- 2026-10-20 — Project cards (home + Other projects) no longer fade in on scroll; always visible.
+- 2026-10-21 — Home intro now starts "I helped companies…".
+- 2026-10-21 — Home intro: "I helped" → "I help".
+- 2026-10-21 — Project 1 client named: PayPerHead (Client field, story paragraph, home card subtitle).
+- 2026-10-21 — P1 story: removed redundant "pay-per-head (PPH) company".
+- 2026-10-21 — P1 story paragraph 2 first sentence rewritten (betting sites, weakening retention and credibility).
+- 2026-10-21 — P1 Return/Clear/Continue card: shorter "Now" text, shopping-cart comparison removed.
+- 2026-10-21 — P1 card: "updates totals live" → "updates the totals as amounts are entered".
+- 2026-10-21 — P1 card: "Totals change instantly as amounts are entered".
+- 2026-10-21 — P1 navigation menu text: first sentence shortened ("many products at once").
+- 2026-10-21 — P1 Easy modification: first paragraph shortened.
+- 2026-10-21 — P2 story: "core business need" → "needs".
+- 2026-10-21 — P2 "No ad interruptions" card: phone screen replaced with the Adele artist page (images/project-2-no-ads-adele.jpg); frame, yellow background and text kept.
+- 2026-10-21 — P2 Who it was designed for: tighter spacing (bottom padding 140→72, smaller icons, 2 columns on phones).
+- 2026-10-21 — P2 Research cards: usability test described as recorded (participant + screen); Google Forms described as screener for phone interviews.
+- 2026-10-21 — P2 Research cards: new "How it was done" method block (icons + 3 steps) shown before the findings; findings text restored.
+- 2026-10-21 — P2 research numbers: label wraps right under the number (gap fixed).
+- 2026-10-21 — P2 research numbers 52px → 38px so the card titles lead.
+- 2026-10-21 — P2: smaller gap between Research and The insight (~128px → ~56px).
+- 2026-10-21 — P2 Learnings: two items (Respect the user’s time; Context beats assumptions, rewritten); "Talk to the extremes" removed.
+- 2026-10-21 — P2 Learnings: Context beats assumptions first, text tied to the USA vs Mexico finding.
+- 2026-10-21 — P2: "USA point of view" → "USA team’s point of view" (Blind spot, vs card label, Learnings).
+- 2026-10-21 — P2 Learnings: closing line now about reviewing users’ local context every time.
+- 2026-10-21 — P3 02: "Not played" → "Ready to play" (label + image description).
+- 2026-10-21 — P3: page scroll no longer blocked when the mouse is over the static phone screens (library + saving space).
+- 2026-10-21 — P3 Saving space: "A prompt" → "A call to action".
+- 2026-10-21 — P3 stacked flow titles use full width on desktop (one line); paragraphs capped at 720px.
+- 2026-10-21 — Skills: added Localization to Strategy.
+- 2026-10-21 — Skills: Localization → Multi-market Localization; Artifact Development → AI Prototyping.
+- 2026-10-21 — Skills: removed Google Forms.
+- 2026-10-21 — "Download CV" button in hero + CV icon in every footer; both link to `Jesus-Reyna-Senior-Product-Designer-CV.pdf` (add the file to the site root).
+- 2026-10-21 — Skills aligned with CV (added user flows, IA, wireframing, responsive web, usability testing, data-informed design, VPD, stakeholder collaboration; removed Branding; merged documentation tags).
+- 2026-10-21 — Project pages: added Role field (full-width row under Client/Year).
+- 2026-10-21 — Skills: AI Prototyping → AI Prototyping (Claude Artifacts).
+- 2026-10-21 — Skills: removed Stakeholder Collaboration (kept in CV only).
+- 2026-10-21 — Skills trimmed to 16: Design (5, adds iOS and Android Design), Strategy (7), AI & Technical (4).
+- 2026-10-21 — Skills: added Color Tokens to Design.
+- 2026-10-21 — Retention tags removed (home P2 card, Other projects meta). Responsive Web Design added to P1 Services and P1 home card (replaces Mobile Design tag).
+- 2026-10-21 — Header: Skills link removed on all pages; logo visible on phones too (links home).
+- 2026-10-21 — Footer glow (orb) added to all three case studies in their brand color.
+- 2026-10-21 — GitHub-ready package: backups/portfolio-github/ (+ zip) with only the files the 4 pages use; CV PDF still missing.

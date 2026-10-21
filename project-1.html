@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rethinking the Betting Experience — J. Reyna</title>
+  <meta name="description" content="A walk through how betting was redesigned for sportsbook players: mapping the old flow, rebuilding it around a single flexible screen, and carrying it to mobile and brand color themes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=117">
+</head>
+<body class="has-orbs" style="--project-color: #e0243a;">
+
+  <!-- Grainy gradient orbs in the project color (ref. Cornelius "Point" cover) -->
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+    <span class="orb orb--4"></span>
+  </div>
+
+  <!-- ============ HEADER (fixed; becomes a floating bubble on scroll) ============ -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Primary">
+        <a class="pill pill--soft" href="index.html#work">Work</a>
+      </nav>
+
+      <a class="wordmark" href="index.html" aria-label="J. Reyna — home">
+        <span>J. Reyna</span>
+        <span class="wordmark-sub">Portfolio</span>
+      </a>
+
+      <div class="nav-right">
+        <span class="availability"><i class="dot" aria-hidden="true"></i><span class="availability-text">Available for projects</span></span>
+        <a class="pill pill--black" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ TITLE + SHORT DESCRIPTION ============ -->
+    <section class="hero project-hero">
+      <p class="eyebrow"><a href="index.html#work">← All work</a></p>
+      <h1 class="display">Rethinking <em>the Betting Experience</em></h1>
+      <p class="lead">A walk through how betting was redesigned for sportsbook players: mapping the old flow, rebuilding it around a single flexible screen, and carrying it to mobile and brand color themes.</p>
+    </section>
+
+    <!-- ============ PROJECT IMAGE (replace the span with an <img>) ============ -->
+    <section class="project-image">
+      <div class="thumb thumb--natural motion-shot"><img src="images/project-1-bg.jpg" alt="Rethinking the Betting Experience — desktop and mobile betting experience"><svg class="shot-bg" viewBox="0 0 2000 1310" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="p1h-g1"><stop offset="0" stop-color="#e0194a" stop-opacity=".55"/><stop offset="1" stop-color="#e0194a" stop-opacity="0"/></radialGradient><radialGradient id="p1h-g2"><stop offset="0" stop-color="#6a2bd1" stop-opacity=".45"/><stop offset="1" stop-color="#6a2bd1" stop-opacity="0"/></radialGradient><mask id="p1h-m"><rect width="2000" height="1310" fill="#fff"/><rect x="92" y="300" width="1250" height="735" rx="22" fill="#000"/><rect x="1390" y="142" width="492" height="1013" rx="84" fill="#000"/></mask></defs><g mask="url(#p1h-m)"><ellipse class="shot-glow shot-glow--1" cx="1560" cy="1205" rx="840" ry="550" fill="url(#p1h-g1)"/><ellipse class="shot-glow shot-glow--2" cx="360" cy="157" rx="760" ry="497" fill="url(#p1h-g2)"/></g></svg><span class="shot-layer shot-layer--desk" style="left:5.150%;top:24.046%;width:61.350%;height:54.198%;border-radius:1.63% / 2.82%;background-image:url('images/project-1.webp');background-size:162.999% 184.507%;background-position:13.325% 52.500%;" aria-hidden="true"></span><span class="shot-layer shot-layer--phone" style="left:69.800%;top:11.603%;width:23.800%;height:75.802%;border-radius:16.39% / 7.85%;background-image:url('images/project-1.webp');background-size:420.168% 131.923%;background-position:91.601% 47.950%;" aria-hidden="true"></span></div>
+    </section>
+
+    <!-- ============ STORY (left) + SERVICES & TOOLS (right) ============ -->
+    <section class="section project-detail">
+      <div class="story">
+        <h2 class="display display--md">Long story <em>short</em></h2>
+        <div class="story-text">
+          <p>PayPerHead provides sportsbook software that lets bookies manage their agents and betting lines, and run a branded betting site for each agent’s players.</p>
+          <p>The betting sites were outdated and hard to use, weakening player retention and the brands’ credibility. The redesign replaced a rigid, step-by-step betting flow with a flexible one, shaped by user feedback, business goals and the technical limitations of external providers.</p>
+          <p>The result is one screen for the whole bet, a better mobile experience and a wider variety of color themes for every brand.</p>
+        </div>
+      </div>
+      <aside class="facts">
+        <dl class="fact fact-meta">
+          <div><dt>Client</dt><dd>PayPerHead</dd></div>
+          <div><dt>Year</dt><dd>2025</dd></div>
+          <div class="fact-role"><dt>Role</dt><dd>Product Designer (sole designer)</dd></div>
+        </dl>
+        <div class="fact">
+          <h3>Services</h3>
+          <ul class="tags"><li>UX Research</li><li>Usability Testing</li><li>Interaction Design</li><li>UI Design</li><li>Mobile Design</li><li>Responsive Web Design</li><li>Design System</li><li>Theming &amp; Color Tokens</li></ul>
+        </div>
+        <div class="fact">
+          <h3>Tools</h3>
+          <ul class="tags"><li>Figma</li><li>FigJam</li></ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ============ BEFORE / AFTER ============
+         Desktop: Before · What changed · After per row.
+         Mobile: one image + Before/After toggle; flips to After automatically the first time it scrolls into view. -->
+    <section class="section" id="before-after">
+      <div class="section-head">
+        <p class="eyebrow">Before &amp; after</p>
+        <h2 class="display display--md">From old <em>to new</em></h2>
+      </div>
+      <div class="compare-list">
+        <!-- Single-screen layout: drag the line to compare old vs new -->
+        <article class="slider-row">
+          <h3>Single-screen layout</h3>
+          <div class="slider-compare slider-compare--wide" data-slider style="--pos: 50%;">
+            <img class="slider-img" data-src="images/project-1-after-single-screen.webp" width="2000" height="1500" alt="New 1Bettor sportsbook: sports menu, game lines and betslip together on one screen">
+            <div class="slider-before">
+              <img class="slider-img" data-src="images/project-1-before-single-screen.webp" width="2000" height="1500" alt="Old 1Bettor sportsbook: sport selection list with checkboxes and a Continue step before seeing lines">
+            </div>
+            <span class="slider-label slider-label--before">Before</span>
+            <span class="slider-label slider-label--after">After</span>
+            <div class="slider-handle" aria-hidden="true"><span class="slider-knob">‹ ›</span></div>
+            <input class="slider-range" type="range" min="0" max="100" value="50" step="0.5" aria-label="Drag to compare the old and new site">
+          </div>
+          <div class="compare-notes">
+            <p class="eyebrow">What changed</p>
+            <ul><li>Before: the default screen only showed a list of sports to choose from</li><li>After: the full width is put to work, showing sports and leagues, odds and the betslip together on one screen</li></ul>
+          </div>
+        </article>
+        <!-- Single-image highlight (no before/after) -->
+        <article class="feature">
+          <h2 class="display display--md feature-headline">From 12 steps and a dead&nbsp;end<br> <em>to one flexible screen</em></h2>
+
+          <div class="process">
+            <h3>The old process</h3>
+            <p class="process-sub">The full flow was mapped click by click, from the sports menu to the confirmation.</p>
+            <ol class="process-steps">
+              <li class="process-step"><span class="process-num">01</span><span>Select sports</span></li>
+              <li class="process-step"><span class="process-num">02</span><span>Pick bet type from dropdown</span></li>
+              <li class="process-step"><span class="process-num">03</span><span>Select league</span></li>
+              <li class="process-step"><span class="process-num">04</span><span>Continue</span></li>
+              <li class="process-step"><span class="process-num">05</span><span>Select odds from matches</span></li>
+              <li class="process-step"><span class="process-num">06</span><span>Continue</span></li>
+              <li class="process-step process-step--pain"><span class="process-num">07</span><span>Type wager amount (unclear what it applies to)</span></li>
+              <li class="process-step"><span class="process-num">08</span><span>Continue</span></li>
+              <li class="process-step"><span class="process-num">09</span><span>Confirmation screen, enter password</span></li>
+              <li class="process-step"><span class="process-num">10</span><span>Place bet</span></li>
+              <li class="process-step"><span class="process-num">11</span><span>Snackbar: bet successfully placed</span></li>
+              <li class="process-step process-step--loop"><span class="process-num">12</span><span>Another bet? Repeat from step 01</span></li>
+            </ol>
+            <div class="process-stats">
+              <div class="stat-group">
+                <p class="stat-group-label">Old process</p>
+                <div class="stat-items">
+                  <div><strong>12</strong><span>steps to place a bet</span></div>
+                  <div><strong>4</strong><span>“Continue” screens</span></div>
+                </div>
+              </div>
+              <span class="stat-arrow" aria-hidden="true">→</span>
+              <div class="stat-group stat-group--new">
+                <p class="stat-group-label">New design</p>
+                <div class="stat-items">
+                  <div><strong>6</strong><span>steps to place a bet, half as many</span></div>
+                  <div><strong>1</strong><span>single screen</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>A simpler way to place bets</h3>
+          <figure class="feature-img thumb thumb--natural">
+            <video src="assets/1bettor-desktop-to-mobile-v3.mp4" poster="assets/1bettor-desktop-to-mobile-poster.webp" data-play-in-view muted loop playsinline preload="auto" aria-label="New 1Bettor desktop layout: the sports menu, game lines and betslip columns become the Sports, Selections and Betslip tabs of the mobile footer, where a helmet icon rises to show each new selection"></video>
+          </figure>
+          <p class="feature-text">The step-by-step wizard, where going back erased all progress, was replaced by three columns working side by side: sports, lines and the betslip. Bettors can adjust any of them independently, at any moment, without losing the selections they have already made.</p>
+
+          <!-- What was removed: desktop = 3 cards; mobile = stacked deck to swipe or tap through -->
+          <div class="removed">
+            <h3>What was removed and where it went</h3>
+            <p class="process-sub">Nothing was lost. Each part of the wizard became something visible on the page, changeable at any time and usable in any order.</p>
+            <div class="removed-deck" data-deck>
+              <div class="removed-list">
+                <article class="removed-card">
+                  <div class="removed-visual">
+                    <span class="removed-badge">Removed</span>
+                    <div class="old-ui old-dropdown" aria-hidden="true">
+                      <div class="old-dropdown-head">SPORTS › Straight <span>▲</span></div>
+                      <ul><li>SPORTS / Upcoming Events</li><li class="is-on">SPORTS / Straight</li><li>SPORTS / Parlay</li><li>SPORTS / Teaser</li><li>SPORTS / If Win Only</li><li>SPORTS / If Win or Tie</li><li>SPORTS / Action Reverse</li><li>SPORTS / Win Reverse</li><li>SPORTS / Round Robin</li><li>SPORTS / Compact RR</li></ul>
+                    </div>
+                  </div>
+                  <div class="removed-body">
+                    <h4>Bet-type dropdown</h4>
+                    <p class="removed-tag removed-tag--before">Before</p>
+                    <p>Bettors had to choose the bet type up front, from a hidden list of 10 options, before seeing a single game.</p>
+                    <p class="removed-tag removed-tag--now">Now</p>
+                    <p>Straights, Parlays, Teasers, If Bets and Round Robins are tabs on the betslip. Games are picked first, and the bet type can be switched without losing them.</p>
+                  </div>
+                </article>
+                <article class="removed-card">
+                  <div class="removed-visual">
+                    <span class="removed-badge">Removed</span>
+                    <div class="old-ui old-wizard" aria-hidden="true">
+                      <div class="old-wizard-bar"><span>‹ Straight</span><span class="old-dots"><i></i><i></i><i class="is-on"></i><i></i></span></div>
+                    </div>
+                  </div>
+                  <div class="removed-body">
+                    <h4>Step-by-step wizard</h4>
+                    <p class="removed-tag removed-tag--before">Before</p>
+                    <p>A 4-dot progress bar locked bettors into a fixed order. Going back wiped their progress and sent them back to the start.</p>
+                    <p class="removed-tag removed-tag--now">Now</p>
+                    <p>Three columns sit side by side: the sports list, the event matches and the betslip. Every step is visible at once, so a progress bar is no longer needed.</p>
+                  </div>
+                </article>
+                <article class="removed-card">
+                  <div class="removed-visual">
+                    <span class="removed-badge">Removed</span>
+                    <div class="old-ui old-buttons" aria-hidden="true">
+                      <span>Return</span><span>Clear</span><span class="is-on">Continue</span>
+                    </div>
+                  </div>
+                  <div class="removed-body">
+                    <h4>Return / Clear / Continue</h4>
+                    <p class="removed-tag removed-tag--before">Before</p>
+                    <p>Every screen ended with navigation buttons, adding four extra clicks before reaching the wager.</p>
+                    <p class="removed-tag removed-tag--now">Now</p>
+                    <p>Clicking an odd adds it straight to the betslip, which shows the risk and potential win of each pick. Totals change instantly as amounts are entered, and a single Place Bet confirms everything.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="removed-controls">
+                <button type="button" data-deck-prev aria-label="Previous card">←</button>
+                <span class="removed-count" data-deck-count>1 / 3</span>
+                <button type="button" data-deck-next aria-label="Next card">→</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Platform refinements: navigation (players) and branding (agents) -->
+        <div class="subsection-head">
+          <p class="eyebrow">Platform refinements</p>
+          <h3 class="display display--md">Easier to navigate, <em>easier to brand</em></h3>
+        </div>
+
+        <!-- Desktop header: before/after video -->
+        <article class="slider-row">
+          <h3>Header reorganization</h3>
+          <figure class="theme-video theme-video--wide">
+            <video src="assets/1bettor-header-zoom.mp4?v=2" poster="assets/1bettor-header-zoom-poster.jpg?v=2" width="1920" height="1080" data-play-in-view muted loop playsinline preload="metadata" aria-label="Before and after of the 1Bettor desktop header: the old two-row header with cashier, account links and products spread out, then the new single-row header with products on the left, Open bets, History, Cashier and balance on the right, and a profile icon"></video>
+          </figure>
+          <p class="row-text">The header was consolidated from two crowded rows into a single row organized by function. This freed space for betting content and created a clearer hierarchy, allowing players to locate each action more quickly.</p>
+        </article>
+
+        <!-- Navigation menu: before/after videos; opens once in view, then the button toggles open/close -->
+        <article class="slider-row menu-row">
+          <h3>Navigation menu reorganization</h3>
+          <figure class="menu-stage" data-menu-toggle>
+            <div class="menu-videos">
+              <video class="menu-video menu-video--open is-active" src="assets/1bettor-menus-open.mp4" poster="assets/1bettor-menus-poster.jpg" width="1960" height="1380" muted playsinline preload="auto" aria-label="Before: the old 1Bettor burger menu as one long list. After: the Menu button in the bottom bar opens the products grid, and the profile icon opens the user panel at the top with inbox, settings, rules, reports and log out"></video>
+              <video class="menu-video menu-video--close" src="assets/1bettor-menus-close.mp4" width="1960" height="1380" muted playsinline preload="auto" aria-hidden="true"></video>
+            </div>
+            <button class="menu-toggle" type="button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+              <span>Open menus</span>
+            </button>
+          </figure>
+          <p class="row-text">The old burger menu showed many products at once in one long list. The menu was reorganized by function: products now live in the bottom bar, within thumb reach, while personal and account information sits in a profile panel at the top. Each category has a clear place, so players always know where to find what they need.</p>
+        </article>
+
+        <!-- Decision fatigue: interactive betslip (auto-demo until the visitor interacts) -->
+        <article class="fatigue">
+          <div class="fatigue-copy">
+            <p class="eyebrow">Minimize decision fatigue</p>
+            <h3 class="display display--md">Easy modification,<br class="br-desktop"> <em>all in one place</em></h3>
+            <p>The old flow made players pick a bet type before seeing any game, and every change meant starting over. That repetition led to fatigue.</p>
+            <p>The new betslip keeps every pick at hand, with the flexibility to switch between bet types and picks, adapting to what each bet type needs, without leaving the screen.</p>
+                      </div>
+
+          <figure class="fatigue-shot">
+            <img src="assets/1bettor-bet-types-phone.webp?v=2" width="676" height="1216" alt="1Bettor betslip on a phone switching between bet types while the picks stay on screen" loading="lazy">
+          </figure>
+        </article>
+
+        <!-- Real color theme personalization: video + short story -->
+        <article class="slider-row">
+          <h3>Real color theme personalization</h3>
+          <figure class="theme-video">
+            <video src="assets/1bettor-themes-before-after.mp4?v=2" poster="assets/1bettor-themes-before-after-poster.jpg?v=2" width="1200" height="900" data-play-in-view muted loop playsinline preload="metadata" aria-label="Before and after of the 1Bettor mobile site: the old dark theme with a limited set of hero colors, then the new site carrying each brand's palette through personalized color themes"></video>
+          </figure>
+          <p class="row-text">Requests for more customization kept reaching the customer service team: agents wanted color to play a real role in their sites. Before, a theme could only switch between black and white, and a barely visible hero color. Now color is deeply integrated into theme customization, carrying each brand’s palette through buttons, selections, tabs and the betslip.</p>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ OUTCOME: BENEFITS ============ -->
+    <section class="section outcome" id="outcome">
+      <div class="section-head">
+        <p class="eyebrow">Outcome</p>
+        <h2 class="display display--md">What it <em>delivered</em></h2>
+      </div>
+      <ul class="outcome-points">
+        <li><b>Adopted by every agent</b><span>Rolled out gradually until all agents used it.</span></li>
+        <li><b>Players’ first choice</b><span>With both sites available, most players picked the new one.</span></li>
+        <li><b>More time on site</b><span>Players spent more time on the new site than on the old one.</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ MORE PROJECTS ============ -->
+    <section class="section" id="more">
+      <div class="section-head">
+        <p class="eyebrow">More work</p>
+        <h2 class="display display--md">Other <em>projects</em></h2>
+      </div>
+      <div class="more-grid">
+        <a class="more-card" href="project-2.html">
+          <span class="thumb thumb--more"><video src="assets/trebel-download-two-songs.mp4" poster="assets/trebel-download-two-songs-poster.jpg" width="1280" height="960" data-play-in-view muted loop playsinline preload="metadata" aria-label="Queue the Music, Download Once — hands holding an iPhone while TREBEL downloads two songs from a queue of 8, with an ad shown during the download"></video></span>
+          <span class="more-title">Queue the Music, Download Once</span>
+          <span class="meta">UX Research · Mobile App · Product Design</span>
+        </a>
+        <a class="more-card" href="project-3.html">
+          <span class="thumb thumb--more thumb--scene"><span class="rubber-scene rubber-scene--thumb">
+              <span class="iphone"><span class="iphone__screen">
+                <span class="iphone__notch"></span>
+                <img src="images/podcast-screens/7-player-indicator.webp?v=2" width="750" height="1624" alt="Podcast player on a phone" loading="lazy">
+              </span></span>
+              <span class="iphone"><span class="iphone__screen">
+                <span class="iphone__notch"></span>
+                <video src="assets/trebel-podcast-show-scroll.mp4?v=3" poster="assets/trebel-podcast-show-scroll-poster.jpg?v=3" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Podcast show page scrolling through its episodes"></video>
+              </span></span>
+            </span></span>
+          <span class="more-title">Bringing Podcasts to TREBEL</span>
+          <span class="meta">UI Design · Design System · Mobile</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER / CONTACT ============ -->
+  <footer class="footer" id="contact">
+    <span class="orb orb--footer" aria-hidden="true"></span>
+    <h2 class="display display--md">Let's <em>work together</em></h2>
+    <p class="lead lead--center">Have a project in mind? Reach out through any of the links below.</p>
+
+    <ul class="contact-icons">
+      <li>
+        <a class="icon-btn" href="mailto:rgchuy@gmail.com?subject=Portfolio%20inquiry" data-email="rgchuy@gmail.com" aria-label="Email rgchuy@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+        <span>Email</span>
+      </li>
+      <li>
+        <a class="icon-btn" href="https://www.linkedin.com/in/jes%C3%BAs-reyna-gonz%C3%A1lez-114232109/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3"/></svg>
+        </a>
+        <span>LinkedIn</span>
+      </li>
+      <li>
+        <a class="icon-btn" href="Jesus-Reyna-Senior-Product-Designer-CV.pdf" download aria-label="Download CV (PDF)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>
+        </a>
+        <span>CV</span>
+      </li>
+    </ul>
+
+    <p class="meta">© <span id="year">2026</span> J. Reyna. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js?v=27"></script>
+</body>
+</html>

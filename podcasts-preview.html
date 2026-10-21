@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bringing Podcasts to TREBEL — J. Reyna</title>
+  <meta name="description" content="Podcast experience for TREBEL, designed for entry-level phones, limited storage and small data plans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=115">
+  <style>
+    /* Draft styles for the podcast case study preview */
+    .pod-screen { display: block; width: 100%; height: auto; border-radius: 16px; background: #1b1b1b; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 12px 32px -8px rgba(0,0,0,.18); }
+    .pod-hero { display: grid; grid-template-columns: repeat(2, minmax(0, 320px)); gap: 32px; justify-content: center; align-items: start; }
+    .pod-hero figure { margin: 0; display: grid; gap: 12px; }
+    .pod-hero .pod-screen { aspect-ratio: 9 / 18; object-fit: cover; object-position: top; }
+    .pod-hero figcaption, .pod-states figcaption { font-size: 13px; color: var(--color-quiet-gray); text-align: center; }
+
+    .pod-constraints { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .pod-constraints li { list-style: none; padding: 24px; border-radius: 16px; background: color-mix(in srgb, var(--project-color) 12%, #fff); border: 1px solid color-mix(in srgb, var(--project-color) 30%, #fff); }
+    .pod-constraints h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .pod-constraints p { font-size: 14px; line-height: 1.55; color: #333; }
+
+    .pod-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .pod-detail { display: grid; gap: 14px; align-content: start; }
+    .pod-crop { aspect-ratio: var(--ar); border-radius: 14px; background-color: #1b1b1b; background-repeat: no-repeat; background-size: 100% auto; background-position: 50% var(--y); box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 10px 28px -10px rgba(0,0,0,.25); }
+    .pod-detail h3 { font-size: 16px; font-weight: 700; }
+    .pod-detail p { font-size: 14px; line-height: 1.6; color: #333; margin-top: 4px; }
+
+    .pod-states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pod-states figure { margin: 0; display: grid; gap: 14px; align-content: start; }
+    .pod-states figcaption { text-align: left; color: inherit; }
+    .pod-states .pod-screen { aspect-ratio: 9 / 16; object-fit: cover; object-position: top; }
+    .pod-states h3 { font-size: 16px; font-weight: 700; }
+    .pod-states p { font-size: 14px; line-height: 1.6; color: #333; margin-top: 4px; }
+
+    .pod-outcome { max-width: 760px; margin: 0 auto; text-align: center; }
+
+    @media (max-width: 760px) {
+      .pod-hero { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .pod-constraints, .pod-details, .pod-states { grid-template-columns: 1fr; }
+      .pod-screen { border-radius: 10px; }
+    }
+  </style>
+</head>
+<body class="has-orbs" style="--project-color: #FFF200;">
+
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Primary">
+        <a class="pill pill--soft" href="index.html#skills">Skills</a>
+        <a class="pill pill--soft" href="index.html#work">Work</a>
+      </nav>
+      <a class="wordmark" href="index.html" aria-label="J. Reyna — home">
+        <span>J. Reyna</span>
+        <span class="wordmark-sub">Portfolio</span>
+      </a>
+      <div class="nav-right">
+        <span class="availability"><i class="dot" aria-hidden="true"></i><span class="availability-text">Available for projects</span></span>
+        <a class="pill pill--black" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ 1. CONTEXT ============ -->
+    <section class="hero project-hero">
+      <p class="eyebrow"><a href="index.html#work">← All work</a></p>
+      <h1 class="display">Bringing podcasts <em>to TREBEL</em></h1>
+      <p class="lead">In 2021, podcast listening was growing fast. TREBEL added podcasts to reach new audiences and open room for new products. Many of its users have entry-level Android phones, little storage and small data plans, so every screen was designed around those limits.</p>
+      <ul class="pod-constraints">
+        <li><h3>Entry-level devices</h3><p>Screens were designed for a 360 × 640 Android viewport.</p></li>
+        <li><h3>Limited data</h3><p>Users can judge what an action costs before they tap it.</p></li>
+        <li><h3>Familiar patterns</h3><p>Podcasts reuse TREBEL’s library, player and list components.</p></li>
+      </ul>
+    </section>
+
+    <!-- ============ 2. HERO SCREENS ============ -->
+    <section class="project-image">
+      <div class="pod-hero">
+        <figure>
+          <img class="pod-screen" src="images/podcast-show.png" width="375" height="1835" alt="Podcast show page with cover, follow button and episode list">
+          <figcaption>Show page</figcaption>
+        </figure>
+        <figure>
+          <img class="pod-screen" src="images/podcast-library-episodes.png" width="360" height="1318" alt="Podcast library showing saved episodes">
+          <figcaption>Podcast library · Episodes</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ STORY + FACTS ============ -->
+    <section class="section project-detail">
+      <div class="story">
+        <h2 class="display display--md">Long story <em>short</em></h2>
+        <div class="story-text">
+          <p>Podcasts were added to the existing Library, next to Music and Videos, so the new content type felt familiar from the first visit.</p>
+          <p>The design focused on small details that reduce steps, data use and uncertainty for listeners on low-end devices.</p>
+        </div>
+      </div>
+      <aside class="facts">
+        <dl class="fact fact-meta">
+          <div><dt>Client</dt><dd>TREBEL</dd></div>
+          <div><dt>Year</dt><dd>2021</dd></div>
+        </dl>
+        <div class="fact">
+          <h3>Services</h3>
+          <ul class="tags"><li>UI Design</li><li>Interaction Design</li><li>Mobile Design</li></ul>
+        </div>
+        <div class="fact">
+          <h3>Tools</h3>
+          <ul class="tags"><li>Figma</li></ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ============ 3. DETAIL CALLOUTS ============ -->
+    <section class="section" id="details">
+      <div class="section-head">
+        <p class="eyebrow">Usability details</p>
+        <h2 class="display display--md">Small details, <em>real benefits</em></h2>
+      </div>
+      <div class="pod-details">
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/199; --y: 81.2%; background-image: url(images/podcast-show.png);" role="img" aria-label="Episode card with play button"></div>
+          <div><h3>Play straight from the list</h3><p>Every episode card has its own play button, so listening starts without loading a detail screen first. Fewer steps, less data.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/199; --y: 33.8%; background-image: url(images/podcast-show.png);" role="img" aria-label="Episode card with truncated title and description"></div>
+          <div><h3>Fixed text length</h3><p>Titles stop at three lines and descriptions at two. Cards keep a predictable height, so the list is easy to scan and quick to scroll.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/179; --y: 45.4%; background-image: url(images/podcast-show.png);" role="img" aria-label="Episode card with progress bar and time left"></div>
+          <div><h3>Progress is saved</h3><p>A progress bar and a “30min left” label let users resume where they stopped instead of streaming the episode again.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/199; --y: 56.9%; background-image: url(images/podcast-show.png);" role="img" aria-label="Episode card marked as played"></div>
+          <div><h3>Duration, date and “Played”</h3><p>Length and date appear before playback, so users can judge time and data cost. Finished episodes are marked to avoid accidental replays.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/300; --y: 9.1%; background-image: url(images/podcast-show.png);" role="img" aria-label="Show header with cover and follow button"></div>
+          <div><h3>Follow, then find it again</h3><p>The Follow button sends a show to My shows in the Library, next to Music and Videos.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 375/87; --y: 26.7%; background-image: url(images/podcast-show.png);" role="img" aria-label="Episode count and sort control"></div>
+          <div><h3>Sorting</h3><p>The episode count and a “Newest to oldest” sort keep long series manageable.</p></div>
+        </article>
+        <article class="pod-detail">
+          <div class="pod-crop" style="--ar: 360/220; --y: 11.7%; background-image: url(images/podcast-library-shows.png);" role="img" aria-label="Library shortcuts and search in my podcasts"></div>
+          <div><h3>Library search</h3><p>A search bar inside the podcast library finds saved shows without a new catalog request.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 4. STATES ============ -->
+    <section class="section" id="states">
+      <div class="section-head">
+        <p class="eyebrow">States</p>
+        <h2 class="display display--md">Every state <em>covered</em></h2>
+      </div>
+      <div class="pod-states">
+        <figure>
+          <img class="pod-screen" src="images/podcast-empty.png" width="360" height="640" alt="Empty state inviting users to find a podcast" loading="lazy">
+          <figcaption><h3>Empty state</h3><p>Explains what will appear and links to Find New Podcast.</p></figcaption>
+        </figure>
+        <figure>
+          <img class="pod-screen" src="images/podcast-offline.png" width="360" height="1015" alt="Offline mode message with followed shows" loading="lazy">
+          <figcaption><h3>Offline mode</h3><p>States clearly that episodes need a connection and that offline listening is coming, while still showing followed shows.</p></figcaption>
+        </figure>
+        <figure>
+          <img class="pod-screen" src="images/podcast-popular.png" width="360" height="640" alt="Popular podcasts grid" loading="lazy">
+          <figcaption><h3>Popular podcasts</h3><p>A two-column grid of covers lets users choose a show by its artwork, with very little reading.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 5. OUTCOME ============ -->
+    <section class="section">
+      <div class="pod-outcome">
+        <p class="eyebrow">Outcome</p>
+        <p class="lead lead--center">Podcasts became part of TREBEL’s library, built from existing components, designed for low-end devices and limited data, and ready for future features such as offline listening.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <h2 class="display display--md">Let's <em>work together</em></h2>
+    <p class="meta">© <span id="year">2026</span> J. Reyna. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js?v=25"></script>
+</body>
+</html>

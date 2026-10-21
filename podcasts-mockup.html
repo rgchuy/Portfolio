@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bringing Podcasts to TREBEL — J. Reyna</title>
+  <meta name="description" content="Podcast experience for TREBEL, designed for entry-level phones, limited storage and small data plans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=115">
+  <style>
+    /* auto-scrolling long screens */
+    .scrolls img { animation: screen-scroll var(--dur, 14s) ease-in-out infinite alternate; animation-play-state: paused; }
+    .is-live .scrolls img, .scrolls.is-live img { animation-play-state: running; }
+    @keyframes screen-scroll { 0%, 12% { transform: translateY(0); } 88%, 100% { transform: translateY(var(--travel, 0px)); } }
+
+    /* crossfading states */
+    .states img { opacity: 0; animation: state-fade var(--dur, 6s) infinite; animation-play-state: paused; }
+    .states img:nth-child(1) { animation-delay: 0s; }
+    .states img:nth-child(2) { animation-delay: calc(var(--dur, 6s) / 2); }
+    .is-live .states img { animation-play-state: running; }
+    @keyframes state-fade { 0% { opacity: 0; } 6%, 50% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+    /* pulsing hotspot */
+    .hot {
+      position: absolute; z-index: 6; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+      border-radius: 50%; background: #FFF200; box-shadow: 0 0 0 4px rgba(255,242,0,.35);
+      display: grid; place-items: center; font: 700 12px/1 "DM Sans", sans-serif; color: #111;
+    }
+    .hot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #FFF200; animation: ping 2s ease-out infinite; }
+    @keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+
+    /* filter sequence: list → sheet slides up → filtered list */
+    .seq .base, .seq .result { animation: seq-base 10s infinite; animation-play-state: paused; }
+    .seq .result { animation-name: seq-result; }
+    .seq .dim { position: absolute; inset: 0; background: rgba(0,0,0,.55); opacity: 0; animation: seq-dim 10s infinite; animation-play-state: paused; z-index: 2; }
+    .seq .sheet { top: auto !important; bottom: 0; z-index: 3; transform: translateY(100%); animation: seq-sheet 10s infinite; animation-play-state: paused; }
+    .is-live .seq .base, .is-live .seq .result, .is-live .seq .dim, .is-live .seq .sheet { animation-play-state: running; }
+    @keyframes seq-dim    { 0%, 20% { opacity: 0; } 28%, 52% { opacity: 1; } 58%, 100% { opacity: 0; } }
+    @keyframes seq-sheet  { 0%, 20% { transform: translateY(100%); } 28%, 52% { transform: translateY(0); } 58%, 100% { transform: translateY(100%); } }
+    @keyframes seq-base   { 0%, 54% { opacity: 1; } 58%, 96% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes seq-result { 0%, 54% { opacity: 0; transform: translateY(0); } 58% { opacity: 1; transform: translateY(0); } 92% { opacity: 1; transform: translateY(-22%); } 96%, 100% { opacity: 0; } }
+    .seq-steps { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .seq-steps li { list-style: none; font-size: 12px; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid #e6e6e6; }
+
+    /* ---------- layout ---------- */
+    .pm-hero { display: flex; justify-content: center; align-items: flex-end; gap: 40px; padding: 24px 0 8px; }
+    .pm-hero .iphone:nth-child(1) { --w: 240px; transform: translateY(-20px) rotate(-4deg); }
+    .pm-hero .iphone:nth-child(2) { --w: 290px; }
+    .pm-hero .iphone:nth-child(3) { --w: 240px; transform: translateY(-20px) rotate(4deg); }
+    .float { animation: float 6s ease-in-out infinite; }
+    .pm-hero .iphone:nth-child(2) .float, .pm-hero .iphone:nth-child(2) { animation-delay: -2s; }
+
+    .pm-constraints { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .pm-constraints li { list-style: none; padding: 24px; border-radius: 16px; background: color-mix(in srgb, var(--project-color) 12%, #fff); border: 1px solid color-mix(in srgb, var(--project-color) 30%, #fff); }
+    .pm-constraints h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .pm-constraints p { font-size: 14px; line-height: 1.55; color: #333; }
+
+    .pm-feature { display: grid; grid-template-columns: auto 1fr; gap: 72px; align-items: center; }
+    .pm-feature + .pm-feature { margin-top: 120px; }
+    .pm-feature--flip { grid-template-columns: 1fr auto; }
+    .pm-feature--flip .pm-device { order: 2; }
+    .pm-copy { max-width: 460px; display: grid; gap: 14px; }
+    .pm-num { font-size: 13px; font-weight: 700; color: var(--color-quiet-gray); }
+    .pm-copy h3 { font-family: var(--font-display); font-weight: 300; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; letter-spacing: -.04em; }
+    .pm-copy > p { font-size: 16px; line-height: 1.6; color: #333; }
+    .pm-notes { display: grid; gap: 12px; margin-top: 6px; }
+    .pm-notes li { list-style: none; display: grid; grid-template-columns: 26px 1fr; gap: 12px; font-size: 14px; line-height: 1.55; color: #333; }
+    .pm-notes b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #FFF200; font-size: 11px; color: #111; }
+    .pm-notes strong { color: #111; }
+
+    /* detail zoom cards */
+    .pm-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .pm-detail { display: grid; gap: 14px; align-content: start; }
+    .pm-zoom { position: relative; overflow: hidden; border-radius: 18px; aspect-ratio: var(--ar); background: #1b1b1b; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 14px 32px -12px rgba(0,0,0,.3); }
+    .pm-zoom > div { position: absolute; inset: 0; background: var(--img) no-repeat 50% var(--y) / 100% auto; transform: scale(1); transition: transform .8s cubic-bezier(.2,.7,.2,1); transform-origin: var(--ox, 50%) var(--oy, 50%); }
+    .pm-detail:hover .pm-zoom > div, .pm-detail.is-live .pm-zoom > div { transform: scale(1.05); }
+    .pm-detail h3 { font-size: 16px; font-weight: 700; }
+    .pm-detail p { font-size: 14px; line-height: 1.6; color: #333; margin-top: 4px; }
+
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-live { opacity: 1; transform: none; }
+    @keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+    @media (max-width: 860px) {
+      .pm-hero { gap: 12px; }
+      .pm-hero .iphone:nth-child(1), .pm-hero .iphone:nth-child(3) { --w: 30vw; }
+      .pm-hero .iphone:nth-child(2) { --w: 36vw; }
+      .pm-constraints, .pm-details { grid-template-columns: 1fr; }
+      .pm-feature, .pm-feature--flip { grid-template-columns: 1fr; gap: 32px; justify-items: center; }
+      .pm-feature--flip .pm-device { order: 0; }
+      .pm-feature + .pm-feature { margin-top: 80px; }
+      .iphone { --w: 240px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .states img:first-child, .seq .base { opacity: 1; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="has-orbs" style="--project-color: #FFF200;">
+
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--1"></span><span class="orb orb--2"></span><span class="orb orb--3"></span>
+  </div>
+
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Primary">
+        <a class="pill pill--soft" href="index.html#skills">Skills</a>
+        <a class="pill pill--soft" href="index.html#work">Work</a>
+      </nav>
+      <a class="wordmark" href="index.html" aria-label="J. Reyna — home"><span>J. Reyna</span><span class="wordmark-sub">Portfolio</span></a>
+      <div class="nav-right">
+        <span class="availability"><i class="dot" aria-hidden="true"></i><span class="availability-text">Available for projects</span></span>
+        <a class="pill pill--black" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ INTRO ============ -->
+    <section class="hero project-hero">
+      <p class="eyebrow"><a href="index.html#work">← All work</a></p>
+      <h1 class="display">Bringing podcasts <em>to TREBEL</em></h1>
+      <p class="lead">In 2021, podcast listening was growing fast. TREBEL added podcasts to reach new audiences and open room for new products. Many of its users have entry-level phones, little storage and small data plans, so every screen was designed around those limits.</p>
+    </section>
+
+    <!-- ============ HERO DEVICES ============ -->
+    <section class="project-image">
+      <div class="pm-hero">
+        <div class="iphone float is-live"><div class="iphone__screen scrolls" style="--dur:16s"><span class="iphone__notch"></span><img src="images/podcast-screens/1-home-browse.png" alt="TREBEL home with a podcast row"></div></div>
+        <div class="iphone float is-live"><div class="iphone__screen scrolls" style="--dur:18s"><span class="iphone__notch"></span><img src="images/podcast-screens/2-show-following.png" alt="Podcast show page"></div></div>
+        <div class="iphone float is-live"><div class="iphone__screen scrolls" style="--dur:16s"><span class="iphone__notch"></span><img src="images/podcast-screens/3-episodes-filter-unplayed.png" alt="Episodes filtered by unplayed"></div></div>
+      </div>
+      <ul class="pm-constraints">
+        <li><h3>Entry-level devices</h3><p>Light, list-based screens that stay fast on low-memory phones.</p></li>
+        <li><h3>Limited data</h3><p>Duration, progress and status are visible before anything is streamed.</p></li>
+        <li><h3>Familiar patterns</h3><p>Podcasts reuse TREBEL’s home rows, lists, action sheets and player.</p></li>
+      </ul>
+    </section>
+
+    <!-- ============ STORY + FACTS ============ -->
+    <section class="section project-detail">
+      <div class="story">
+        <h2 class="display display--md">Long story <em>short</em></h2>
+        <div class="story-text">
+          <p>Rather than launching as a standalone section, podcasts were integrated into the existing product architecture. Listeners could access them through the home screen, the library and the player, which keeps the learning curve minimal and builds on established user behavior.</p>
+          <p>The design strategy prioritized precise, purposeful details that reduce interaction steps, data consumption and user uncertainty. These include persistent playback progress on every episode, clear filtering options and lightweight action sheets.</p>
+        </div>
+      </div>
+      <aside class="facts">
+        <dl class="fact fact-meta"><div><dt>Client</dt><dd>TREBEL</dd></div><div><dt>Year</dt><dd>2021</dd></div></dl>
+        <div class="fact"><h3>Services</h3><ul class="tags"><li>UI Design</li><li>Interaction Design</li><li>Mobile Design</li></ul></div>
+        <div class="fact"><h3>Tools</h3><ul class="tags"><li>Figma</li></ul></div>
+      </aside>
+    </section>
+
+    <!-- ============ FEATURES WITH ANIMATED DEVICES ============ -->
+    <section class="section" id="flows">
+      <div class="section-head">
+        <p class="eyebrow">Key flows</p>
+        <h2 class="display display--md">Designed in <em>motion</em></h2>
+      </div>
+
+      <!-- 01 Discover -->
+      <article class="pm-feature reveal">
+        <div class="pm-device">
+          <div class="iphone"><div class="iphone__screen states" style="--dur:7s">
+            <span class="iphone__notch"></span>
+            <img src="images/podcast-screens/1-home-browse.png" alt="Home without a podcast playing">
+            <img src="images/podcast-screens/1-home-browse-playing.png" alt="Home with a podcast playing">
+            <span class="hot" style="left:92%; top:50.5%">1</span>
+            <span class="hot" style="left:27%; top:66%">2</span>
+          </div></div>
+        </div>
+        <div class="pm-copy">
+          <p class="pm-num">01 · Home</p>
+          <h3>Podcasts on the home screen</h3>
+          <p>A “Your favorite Podcast” row sits between music rows, using the same card pattern, so podcasts are discovered without learning a new section.</p>
+          <ul class="pm-notes">
+            <li><b>1</b><span><strong>Now-playing disc.</strong> While an episode plays, its cover spins at the edge of the screen. One tap returns to the player from anywhere on home.</span></li>
+            <li><b>2</b><span><strong>Shared card pattern.</strong> Large covers with title and creator make shows recognizable at a glance, with very little reading.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 02 Follow -->
+      <article class="pm-feature pm-feature--flip reveal">
+        <div class="pm-device">
+          <div class="iphone"><div class="iphone__screen states" style="--dur:5s">
+            <span class="iphone__notch"></span>
+            <img src="images/podcast-screens/2-show-unfollow.png" alt="Show page before following">
+            <img src="images/podcast-screens/2-show-following.png" alt="Show page after following">
+            <span class="hot" style="left:50%; top:50.5%">1</span>
+            <span class="hot" style="left:12%; top:83%">2</span>
+          </div></div>
+        </div>
+        <div class="pm-copy">
+          <p class="pm-num">02 · Show page</p>
+          <h3>Follow once, find it again</h3>
+          <p>The show page puts the cover, title and network first, followed by a single clear action.</p>
+          <ul class="pm-notes">
+            <li><b>1</b><span><strong>Follow / Following.</strong> The button changes state immediately and sends the show to the library, next to Music and Videos.</span></li>
+            <li><b>2</b><span><strong>Tabs for depth.</strong> “In this podcast” and “Description” keep long show notes out of the way until they are needed.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 03 Filter -->
+      <article class="pm-feature reveal">
+        <div class="pm-device">
+          <div class="iphone"><div class="iphone__screen seq">
+            <span class="iphone__notch"></span>
+            <img class="base" src="images/podcast-screens/2-show-following.png" alt="Episode list" style="transform: translateY(-24%)">
+            <span class="dim"></span>
+            <img class="sheet" src="images/podcast-screens/3-episodes-filter-sheet.png" alt="Filter action sheet">
+            <img class="result" src="images/podcast-screens/3-episodes-filter-unplayed.png" alt="Unplayed episodes">
+          </div></div>
+        </div>
+        <div class="pm-copy">
+          <p class="pm-num">03 · Episodes</p>
+          <h3>Filters in one tap</h3>
+          <p>Tapping the filter row opens a short action sheet from the bottom, within thumb reach, with the options users need most: all, unplayed and played episodes.</p>
+          <ul class="seq-steps"><li>Tap filter</li><li>Action sheet</li><li>Unplayed only</li></ul>
+          <ul class="pm-notes">
+            <li><b>✓</b><span><strong>Always reversible.</strong> When a filter is active, a “remove filter” option appears at the bottom, so returning to the default list never requires searching.</span></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ DETAILS (zoomed crops) ============ -->
+    <section class="section" id="details">
+      <div class="section-head">
+        <p class="eyebrow">Usability details</p>
+        <h2 class="display display--md">Small details, <em>real benefits</em></h2>
+      </div>
+      <div class="pm-details">
+        <article class="pm-detail reveal">
+          <div class="pm-zoom" style="--ar:375/199"><div style="--img:url(images/podcast-screens/2-show-following.png); --y:33.8%; --ox:30%; --oy:20%"></div><span class="hot" style="left:58%; top:20%">1</span></div>
+          <div><h3>Fixed text length</h3><p>Titles stop at three lines and descriptions at two. Every card keeps a predictable height, so long lists stay easy to scan.</p></div>
+        </article>
+        <article class="pm-detail reveal">
+          <div class="pm-zoom" style="--ar:375/179"><div style="--img:url(images/podcast-screens/2-show-following.png); --y:45.4%; --ox:80%; --oy:55%"></div><span class="hot" style="left:82%; top:56%">2</span></div>
+          <div><h3>Progress is saved</h3><p>A progress bar and “30min left” show exactly where listening stopped, so episodes resume instead of streaming again.</p></div>
+        </article>
+        <article class="pm-detail reveal">
+          <div class="pm-zoom" style="--ar:375/199"><div style="--img:url(images/podcast-screens/2-show-following.png); --y:56.9%; --ox:85%; --oy:55%"></div><span class="hot" style="left:86%; top:54%">3</span></div>
+          <div><h3>Played marker</h3><p>Finished episodes are tagged “Played”, preventing accidental replays and wasted data.</p></div>
+        </article>
+        <article class="pm-detail reveal">
+          <div class="pm-zoom" style="--ar:375/199"><div style="--img:url(images/podcast-screens/2-show-following.png); --y:81.2%; --ox:10%; --oy:85%"></div><span class="hot" style="left:6%; top:86%">4</span></div>
+          <div><h3>Play from the list</h3><p>Each card has its own play button and shows date and duration first, so users judge time and data cost before tapping.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PLAYER, LIBRARY & EPISODE ============
+         Screens are 750×1624 (2× iPhone 11). Scrolling screens are MP4s with the header and tab bar pinned. -->
+    <section class="section" id="more-flows">
+      <div class="section-head">
+        <p class="eyebrow">Also designed</p>
+        <h2 class="display display--md">Player, library <em>&amp; episodes</em></h2>
+      </div>
+      <div class="pm-trio reveal">
+        <figure>
+          <div class="iphone"><div class="iphone__screen">
+            <span class="iphone__notch"></span>
+            <video src="assets/trebel-podcast-episode-scroll.mp4?v=3" poster="assets/trebel-podcast-episode-scroll-poster.jpg?v=3" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Episode page scrolling from the Resume episode button to related episodes, with the header and tab bar fixed"></video>
+          </div></div>
+          <figcaption>Episode page</figcaption>
+        </figure>
+        <figure>
+          <div class="iphone"><div class="iphone__screen">
+            <span class="iphone__notch"></span>
+            <img src="images/podcast-screens/5-player.webp" alt="Podcast player with sleep timer, 15-second skips and playback speed">
+          </div></div>
+          <figcaption>Player</figcaption>
+        </figure>
+        <figure>
+          <div class="iphone"><div class="iphone__screen">
+            <span class="iphone__notch"></span>
+            <video src="assets/trebel-podcast-library-scroll.mp4?v=2" poster="assets/trebel-podcast-library-scroll-poster.jpg?v=2" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Library scrolling through downloaded podcast episodes, with the header and tab bar fixed"></video>
+          </div></div>
+          <figcaption>Library · Downloaded</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div style="max-width:760px; margin:0 auto; text-align:center">
+        <p class="eyebrow">Outcome</p>
+        <p class="lead lead--center">Podcasts became part of TREBEL’s home, library and player, built from existing components and designed around low-end devices, limited storage and small data plans.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <h2 class="display display--md">Let's <em>work together</em></h2>
+    <p class="meta">© <span id="year">2026</span> J. Reyna. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js?v=25"></script>
+  <script>
+    // Scroll distance for long screens = image height − screen height
+    function setTravel() {
+      document.querySelectorAll('.scrolls').forEach(s => {
+        const img = s.querySelector('img');
+        const run = () => s.style.setProperty('--travel', Math.min(0, s.clientHeight - img.clientHeight) + 'px');
+        img.complete ? run() : img.addEventListener('load', run, { once: true });
+      });
+    }
+    setTravel(); addEventListener('resize', setTravel);
+    // Start animations only when visible
+    const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-live', e.isIntersecting)), { threshold: .3 });
+    document.querySelectorAll('.reveal, .pm-feature').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
