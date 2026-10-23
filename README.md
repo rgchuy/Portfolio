@@ -211,3 +211,4 @@ Static site (no build step). Open `index.html` in a browser, or upload the folde
 - 2026-10-21 — Hero buttons: See my work · Skills · Contact information (Download CV removed from hero; CV stays in footer).
 - 2026-10-23 — Home hero and CV title changed to "Senior UX/UI Designer".
 - 2026-10-23 — Alto role changed to Senior UX/UI Designer (CV and Project 1); CV renamed to Jesus-Reyna-Senior-UX-UI-Designer-CV.pdf.
+- 2026-10-23 — CV: the two Alto (Celerative) roles merged into one entry (Apr 2022 – Jun 2025).
