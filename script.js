@@ -1,3 +1,85 @@
+// UI strings set from script, in the page language (<html lang>): en at the root, es/ and pt/ folders.
+var I18N = {
+  en: { imageViewer: 'Image viewer', close: 'Close', zoomHint: 'Click the image to see it at full size', openMenus: 'Open menus', closeMenus: 'Close menus', emailCopied: 'Email copied: ', writeTo: 'Write to ', menu: 'Menu', skills: 'Skills', language: 'Language' },
+  es: { imageViewer: 'Visor de imágenes', close: 'Cerrar', zoomHint: 'Haz clic en la imagen para verla en tamaño completo', openMenus: 'Abrir menús', closeMenus: 'Cerrar menús', emailCopied: 'Correo copiado: ', writeTo: 'Escribe a ', menu: 'Menú', skills: 'Habilidades', language: 'Idioma' },
+  pt: { imageViewer: 'Visualizador de imagens', close: 'Fechar', zoomHint: 'Clique na imagem para vê-la em tamanho real', openMenus: 'Abrir menus', closeMenus: 'Fechar menus', emailCopied: 'E-mail copiado: ', writeTo: 'Escreva para ', menu: 'Menu', skills: 'Habilidades', language: 'Idioma' }
+};
+var T = I18N[(document.documentElement.lang || 'en').slice(0, 2)] || I18N.en;
+
+// Phones: the header shrinks to logo + Menu button, which opens a full-screen panel
+// with the page links and large language buttons. Built from the header's own links,
+// so the panel follows the page language and the hrefs the build script wrote.
+(function () {
+  var header = document.getElementById('header');
+  var inner = header && header.querySelector('.header-inner');
+  if (!inner) return;
+  var work = inner.querySelector('.nav-left a');
+  var contact = inner.querySelector('.nav-right .pill--black');
+  var langs = inner.querySelectorAll('.lang-switch a');
+  var NAMES = { en: 'English', es: 'Español', pt: 'Português' };
+  var ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>';
+  var ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+  var panel = document.createElement('div');
+  panel.className = 'mobile-menu';
+  panel.id = 'mobile-menu';
+  panel.hidden = true;
+  var skillsHref = document.getElementById('skills') ? '#skills' : work.getAttribute('href').replace('#work', '#skills');
+  panel.innerHTML =
+    '<nav class="mobile-menu__links" aria-label="' + T.menu + '">' +
+      '<a href="' + work.getAttribute('href') + '">' + work.textContent + '</a>' +
+      '<a href="' + skillsHref + '">' + T.skills + '</a>' +
+      '<a href="' + contact.getAttribute('href') + '">' + contact.textContent + '</a>' +
+    '</nav>' +
+    '<p class="eyebrow">' + T.language + '</p>' +
+    '<div class="mobile-menu__langs"></div>';
+  var langBox = panel.querySelector('.mobile-menu__langs');
+  langs.forEach(function (a) {
+    var b = a.cloneNode(true);
+    b.textContent = NAMES[a.textContent.toLowerCase()] || a.textContent;
+    langBox.appendChild(b);
+  });
+  header.after(panel);
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'pill pill--black menu-btn';
+  btn.setAttribute('aria-controls', 'mobile-menu');
+  inner.querySelector('.nav-right').appendChild(btn);
+  document.documentElement.classList.add('has-mobile-menu');
+
+  function setOpen(open) {
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.innerHTML = (open ? ICON_CLOSE : ICON_MENU) + '<span>' + (open ? T.close : T.menu) + '</span>';
+    document.body.classList.toggle('menu-open', open);
+    if (open) panel.querySelector('a').focus();
+  }
+  setOpen(false);
+
+  btn.addEventListener('click', function () { setOpen(panel.hidden); });
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (panel.hidden) return;
+    if (e.key === 'Escape') { setOpen(false); btn.focus(); return; }
+    if (e.key !== 'Tab') return;
+    // Keep keyboard focus inside the open menu (button + panel links).
+    var items = [btn].concat(Array.prototype.slice.call(panel.querySelectorAll('a')));
+    var i = items.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+    else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus(); }
+  });
+  // Rotating or resizing past the phone layout closes the menu.
+  window.matchMedia('(min-width: 561px)').addEventListener('change', function (m) { if (m.matches && !panel.hidden) setOpen(false); });
+})();
+
+// Language switcher: keep the section the visitor is on (#work, #contact…) when changing language.
+document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(function (a) {
+  a.addEventListener('click', function () {
+    if (location.hash && a.href.indexOf('#') === -1) a.href += location.hash;
+  });
+});
+
 // Header: full-width at the top, collapses into a floating bubble after scrolling.
 (function () {
   var header = document.getElementById('header');
@@ -141,10 +223,10 @@
 
   var box = document.createElement('dialog');
   box.className = 'lightbox';
-  box.setAttribute('aria-label', 'Image viewer');
-  box.innerHTML = '<button type="button" class="lightbox-close" aria-label="Close">×</button>' +
+  box.setAttribute('aria-label', T.imageViewer);
+  box.innerHTML = '<button type="button" class="lightbox-close" aria-label="' + T.close + '">×</button>' +
     '<div class="lightbox-stage"><img alt=""></div>' +
-    '<p class="lightbox-hint">Click the image to see it at full size</p>';
+    '<p class="lightbox-hint">' + T.zoomHint + '</p>';
   document.body.appendChild(box);
   var big = box.querySelector('img');
   var stage = box.querySelector('.lightbox-stage');
@@ -274,7 +356,7 @@
     function setOpen(v) {
       isOpen = v;
       if (v) play(openV, closeV); else play(closeV, openV);
-      label.textContent = v ? 'Close menus' : 'Open menus';
+      label.textContent = v ? T.closeMenus : T.openMenus;
       btn.setAttribute('aria-pressed', v ? 'true' : 'false');
     }
     btn.addEventListener('click', function () { started = true; setOpen(!isOpen); });
@@ -308,11 +390,11 @@
   links.forEach(function (a) {
     a.addEventListener('click', function () {
       var addr = a.getAttribute('data-email');
-      var done = function () { show('Email copied: ' + addr); };
+      var done = function () { show(T.emailCopied + addr); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(addr).then(done, function () { show('Write to ' + addr); });
+        navigator.clipboard.writeText(addr).then(done, function () { show(T.writeTo + addr); });
       } else {
-        show('Write to ' + addr);
+        show(T.writeTo + addr);
       }
     });
   });

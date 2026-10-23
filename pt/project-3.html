@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Levando podcasts ao TREBEL — J. Reyna</title>
+  <meta name="description" content="Levando podcasts ao TREBEL: uma experiência de podcasts nativa, projetada em torno das limitações dos usuários do TREBEL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=120">
+</head>
+<body class="has-orbs" style="--project-color: #FFF200;">
+
+  <!-- Grainy gradient orbs in TREBEL yellow -->
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+
+  <!-- ============ HEADER (fixed; becomes a floating bubble on scroll) ============ -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Principal">
+        <a class="pill pill--soft" href="index.html#work">Projetos</a>
+      </nav>
+
+      <a class="wordmark" href="index.html" aria-label="J. Reyna — início">
+        <span>J. Reyna</span>
+        <span class="wordmark-sub">Portfólio</span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="lang-switch" aria-label="Idioma"><a href="../project-3.html" hreflang="en" lang="en">EN</a><a href="../es/project-3.html" hreflang="es" lang="es">ES</a><a href="../pt/project-3.html" hreflang="pt-BR" lang="pt-BR" aria-current="page">PT</a></nav>
+        <span class="availability"><i class="dot" aria-hidden="true"></i><span class="availability-text">Disponível para projetos</span></span>
+        <a class="pill pill--black" href="#contact">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ TITLE + INTRO ============ -->
+    <section class="hero project-hero">
+      <p class="eyebrow"><a href="index.html#work">← Todos os projetos</a></p>
+      <h1 class="display">Levando podcasts <em>ao TREBEL</em></h1>
+      <p class="lead">O consumo de podcasts cresceu em 2021, abrindo espaço para novos produtos e novos públicos. O formato chegou ao TREBEL como uma experiência nativa, projetada em torno das limitações de seus usuários, como dados móveis e armazenamento limitados no celular.</p>
+    </section>
+
+    <!-- ============ PROJECT IMAGE · SHOWCASE: player + show page on rubber ============
+         Screens are 750×1624 (2× iPhone 11). The show page is an MP4 with the header and nav bar pinned. -->
+    <section class="project-image">
+      <div class="rubber-scene">
+        <div class="iphone"><div class="iphone__screen">
+          <span class="iphone__notch"></span>
+          <img src="../images/podcast-screens/7-player-indicator.webp?v=2" width="750" height="1624" alt="Player de podcasts com timer para dormir, avanços de 15 segundos e velocidade de reprodução" loading="lazy">
+        </div></div>
+        <div class="iphone"><div class="iphone__screen">
+          <span class="iphone__notch"></span>
+          <video src="../assets/trebel-podcast-show-scroll.mp4?v=3" poster="../assets/trebel-podcast-show-scroll-poster.jpg?v=3" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Página de um programa de podcast rolando pelos episódios, com o cabeçalho e a barra de navegação fixos"></video>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ STORY (left) + FACTS (right) ============ -->
+    <section class="section project-detail">
+      <div class="story">
+        <h2 class="display display--md">Em <em>resumo</em></h2>
+        <div class="story-text">
+          <p>À medida que o TREBEL crescia além dos downloads de música, novos conteúdos e recursos precisavam caber em um app que as pessoas já conheciam.</p>
+          <p>O design se concentrou em integrar os podcasts, refinando os detalhes que mais importavam para o público do TREBEL sem sair do design system existente, para que o novo conteúdo parecesse nativo do app desde o primeiro lançamento.</p>
+        </div>
+      </div>
+      <aside class="facts">
+        <dl class="fact fact-meta">
+          <div><dt>Cliente</dt><dd>TREBEL</dd></div>
+          <div><dt>Ano</dt><dd>2021</dd></div>
+          <div class="fact-role"><dt>Função</dt><dd>Senior UX/UI Designer (único designer)</dd></div>
+        </dl>
+        <div class="fact">
+          <h3>Serviços</h3>
+          <ul class="tags"><li>Design de UI</li><li>Design de interação</li><li>Design system</li><li>Design mobile</li></ul>
+        </div>
+        <div class="fact">
+          <h3>Ferramentas</h3>
+          <ul class="tags"><li>Figma</li></ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ============ KEY FLOWS ============
+         Placeholders: replace each .p3-ph (phone) or .p3-slot (image/video box) with an <img> or <video>. -->
+    <section class="section" id="flows">
+      <div class="section-head">
+        <p class="eyebrow">Fluxos principais</p>
+        <h2 class="display display--md">Da descoberta <em>à escuta</em></h2>
+      </div>
+
+      <div class="p3-flows">
+        <!-- 01 · Introdução dos podcasts: copy, then episode · player · library -->
+        <article class="p3-flow p3-flow--stack">
+          <div class="p3-copy p3-copy--wide">
+            <p class="p3-num">01 · Introdução dos podcasts</p>
+            <h3>Integração de podcasts</h3>
+            <p>Os podcasts foram integrados à estrutura existente do app: os programas aparecem entre as fileiras de música da tela inicial, cada um abre sua própria página, e uma nova seção de Podcasts na Biblioteca reúne tudo em um só lugar.</p>
+          </div>
+          <div class="pm-trio">
+            <figure>
+              <div class="iphone"><div class="iphone__screen iphone__screen--home">
+                <span class="iphone__notch"></span>
+                <video src="../assets/trebel-podcast-episode-scroll.mp4?v=3" poster="../assets/trebel-podcast-episode-scroll-poster.jpg?v=3" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Página do episódio rolando do botão Resume episode até os episódios relacionados, com o cabeçalho e a barra de abas fixos"></video>
+                <span class="iphone__home" aria-hidden="true"></span>
+              </div></div>
+              <figcaption>Página do episódio</figcaption>
+            </figure>
+            <figure>
+              <div class="iphone"><div class="iphone__screen">
+                <span class="iphone__notch"></span>
+                <img src="../images/podcast-screens/5-player.webp" width="750" height="1624" alt="Player de podcasts com timer para dormir, avanços de 15 segundos e velocidade de reprodução" loading="lazy">
+              </div></div>
+              <figcaption>Player</figcaption>
+            </figure>
+            <figure>
+              <div class="iphone"><div class="iphone__screen iphone__screen--home">
+                <span class="iphone__notch"></span>
+                <video src="../assets/trebel-podcast-library-scroll.mp4?v=2" poster="../assets/trebel-podcast-library-scroll-poster.jpg?v=2" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Biblioteca rolando pelos episódios de podcast baixados, com o cabeçalho e a barra de abas fixos"></video>
+                <span class="iphone__home" aria-hidden="true"></span>
+              </div></div>
+              <figcaption>Biblioteca · Baixados</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <!-- 02 · Filtrar e ordenar: copy, then small media slots -->
+        <article class="p3-flow p3-flow--stack">
+          <div class="p3-copy">
+            <p class="p3-num">02 · Filtrar e ordenar</p>
+            <h3>Detalhes que melhoram a experiência</h3>
+            <p>Os episódios podem ser filtrados e ordenados de acordo com as necessidades de cada ouvinte, enquanto os indicadores de progresso e de reproduzidos mostram quanto já avançaram em cada episódio.</p>
+          </div>
+          <div class="p3-filter-row">
+            <figure class="p3-slot p3-slot--filled"><video id="filter-demo" src="../assets/trebel-podcast-filter.mp4?v=6" poster="../assets/trebel-podcast-filter-poster.jpg?v=6" width="750" height="1194" data-play-in-view muted loop playsinline preload="metadata" aria-label="Filtrando episódios: o ícone de filtro abre uma action sheet, Played é selecionado e só ficam os episódios reproduzidos; depois o botão Remove filter é destacado e tocado para mostrar todos os episódios de novo"></video></figure>
+            <div class="p3-filter-copy">
+              <h4>Filtrar e ordenar</h4>
+              <ol class="p3-steps" data-steps-for="filter-demo">
+                <li data-from="0">Toque no ícone de filtro</li>
+                <li data-from="1.2">Escolha “Played” na action sheet</li>
+                <li data-from="3.4">Só os episódios reproduzidos aparecem</li>
+                <li data-from="5">“Remove filter” traz todos os episódios de volta com um toque</li>
+              </ol>
+            </div>
+          </div>
+          <div class="p3-states-compare">
+            <figure class="p3-slot p3-slot--filled"><img src="../images/podcast-screens/episode-cards-progress.webp?v=5" width="750" height="1234" alt="Lista de episódios com três estados: pronto para tocar com um botão de play, em andamento com um botão de pausa, tempo restante e barra de progresso, e reproduzido com um check" loading="lazy"><figcaption>Lista de episódios</figcaption></figure>
+            <figure class="p3-ep-stack"><figcaption>Página do episódio</figcaption>
+              <img src="../images/podcast-screens/episode-page-play-now.webp" width="750" height="268" alt="Cabeçalho da página de um episódio novo com o botão Play episode now" loading="lazy" style="--y: 17.7%">
+              <img src="../images/podcast-screens/episode-page-resume.webp" width="750" height="268" alt="Cabeçalho da página de um episódio em andamento com o botão Resume episode" loading="lazy" style="--y: 51.6%">
+              <img src="../images/podcast-screens/episode-page-play-again.webp" width="750" height="268" alt="Cabeçalho da página de um episódio reproduzido com o botão Play again" loading="lazy" style="--y: 83.9%">
+            </figure>
+            <ul class="p3-states p3-states--row">
+              <li><b>Pronto para tocar</b> Data, duração total e um jeito direto de começar a ouvir</li>
+              <li><b>Em andamento</b> Tempo restante e uma barra de progresso, para retomar de onde pararam</li>
+              <li><b>Reproduzido</b> Marcado com um check, com a opção de tocar de novo</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 03 · Nova biblioteca: video of explored layouts, then 3 states -->
+        <article class="p3-flow p3-flow--stack">
+          <div class="p3-copy">
+            <p class="p3-num">03 · Nova biblioteca</p>
+            <h3>Uma biblioteca para todo tipo de mídia</h3>
+            <p>A biblioteca foi reconstruída para abrigar músicas, vídeos e podcasts, cada um com seu próprio conteúdo; no caso dos podcasts, programas seguidos e episódios baixados e reproduzidos. Vários layouts foram explorados até chegar a uma estrutura única que escala para todo tipo de mídia.</p>
+          </div>
+          <figure class="p3-explore">
+            <p class="p3-explore__tag">Exploração · Modificação da biblioteca</p>
+            <video src="../assets/trebel-library-exploration.mp4?v=3" poster="../assets/trebel-library-exploration-poster.jpg?v=3" width="720" height="1000" data-play-in-view muted loop playsinline preload="metadata" aria-label="Explorações de layout da biblioteca em sequência rápida: abas, cards de categoria, chips e listas, terminando na biblioteca de podcasts final"></video>
+            <figcaption>31 explorações da biblioteca</figcaption>
+          </figure>
+          <!-- Library states: static screens (top of each image) with the header and tab bar shown; caption below each -->
+          <div class="p3-phones p3-phones--3">
+            <figure class="p3-phone-fig">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home p3-scrollscreen" style="--img-w: 720; --img-h: 1836; --head: 196; --foot: 100;">
+              <span class="iphone__notch"></span>
+              <div class="p3-scroll p3-scroll--static">
+                <img src="../images/project-3-library-myshows.jpg" width="720" height="1836" alt="Biblioteca de podcasts, aba My shows: programas seguidos sob as abas Music, Videos e Podcasts" loading="lazy">
+              </div>
+              <div class="p3-fix p3-fix--head" aria-hidden="true"><img src="../images/project-3-library-myshows.jpg" alt=""></div>
+              <div class="p3-fix p3-fix--foot" aria-hidden="true"><img src="../images/project-3-library-myshows.jpg" alt=""></div>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+              <figcaption><b>Meus programas</b>Programas seguidos em uma única lista.</figcaption>
+            </figure>
+            <figure class="p3-phone-fig">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home p3-scrollscreen" style="--img-w: 720; --img-h: 3220; --head: 196; --foot: 100;">
+              <span class="iphone__notch"></span>
+              <div class="p3-scroll p3-scroll--static">
+                <img src="../images/project-3-library-downloaded.jpg" width="720" height="3220" alt="Biblioteca de podcasts, aba Downloaded: episódios baixados prontos para ouvir offline" loading="lazy">
+              </div>
+              <div class="p3-fix p3-fix--head" aria-hidden="true"><img src="../images/project-3-library-downloaded.jpg" alt=""></div>
+              <div class="p3-fix p3-fix--foot" aria-hidden="true"><img src="../images/project-3-library-downloaded.jpg" alt=""></div>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+              <figcaption><b>Baixados</b>Episódios salvos para ouvir offline.</figcaption>
+            </figure>
+            <figure class="p3-phone-fig">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home p3-scrollscreen" style="--img-w: 720; --img-h: 3220; --head: 196; --foot: 100;">
+              <span class="iphone__notch"></span>
+              <div class="p3-scroll p3-scroll--static">
+                <img src="../images/project-3-library-played.jpg" width="720" height="3220" alt="Biblioteca de podcasts, aba Played: episódios concluídos marcados como reproduzidos" loading="lazy">
+              </div>
+              <div class="p3-fix p3-fix--head" aria-hidden="true"><img src="../images/project-3-library-played.jpg" alt=""></div>
+              <div class="p3-fix p3-fix--foot" aria-hidden="true"><img src="../images/project-3-library-played.jpg" alt=""></div>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+              <figcaption><b>Reproduzidos</b>Episódios em andamento ou já concluídos.</figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SAVING SPACE (auto-remove finished episodes) ============ -->
+    <section class="section">
+      <article class="p3-flow">
+        <div class="p3-copy">
+          <p class="p3-num">Armazenamento</p>
+          <h3>Liberando espaço depois de ouvir</h3>
+          <p>Os episódios reproduzidos podem ser apagados automaticamente para liberar espaço no celular. Uma chamada para ação na biblioteca de baixados leva direto às configurações de podcasts, onde uma única chave remove cada episódio 48 horas depois de ser reproduzido.</p>
+        </div>
+        <div class="p3-phones">
+          <!-- Downloaded library, shown scrolled down: the "Go to podcast settings" button sits in the middle of the screen.
+                 Fixed header = status bar + ad banner + Music/Videos/Podcasts tabs + the 3 library squares (500 px); tab bar = 100 px.
+                 --shift = how far the image is moved up, as a % of its width (1456 of 720 px). -->
+          <div class="iphone"><div class="iphone__screen iphone__screen--home p3-scrollscreen" style="--img-w: 720; --img-h: 3220; --head: 500; --foot: 100;">
+              <span class="iphone__notch"></span>
+              <div class="p3-scroll p3-scroll--static">
+                <img src="../images/project-3-library-downloaded.jpg" width="720" height="3220" alt="Podcasts baixados na Biblioteca, rolada até a mensagem: You can delete played episodes automatically in settings, com o botão Go to podcast settings" loading="lazy" style="margin-top: -202.29%;">
+              </div>
+              <div class="p3-fix p3-fix--head" aria-hidden="true"><img src="../images/project-3-library-downloaded.jpg" alt=""></div>
+              <div class="p3-fix p3-fix--foot" aria-hidden="true"><img src="../images/project-3-library-downloaded.jpg" alt=""></div>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+          <div class="iphone"><div class="iphone__screen iphone__screen--home">
+              <span class="iphone__notch"></span>
+              <img src="../images/project-3-settings-delete-episodes.jpg" width="750" height="1624" alt="Configurações de podcasts com a chave Delete episodes automatically ativada: os episódios reproduzidos são removidos da biblioteca 48 horas depois" loading="lazy">
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ PODCAST PLAYER ============ -->
+    <section class="section">
+      <article class="p3-flow p3-flow--stack">
+        <div class="p3-copy">
+          <p class="p3-num">Player</p>
+          <h3>Um player feito para podcasts</h3>
+          <p>O player de música foi adaptado às necessidades dos podcasts, com ferramentas práticas que dão aos ouvintes mais controle sobre episódios longos: quando parar, em que velocidade ouvir e como continuar ouvindo enquanto leem as notas do episódio.</p>
+        </div>
+        <div class="p3-phones p3-phones--3 p3-player">
+          <figure class="p3-player-demo">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home">
+              <span class="iphone__notch"></span>
+              <video id="player-timer" src="../assets/trebel-podcast-player-timer.mp4" poster="../assets/trebel-podcast-player-timer-poster.jpg" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Timer para dormir: a lua abre uma action sheet, 15 minutos são escolhidos, uma snackbar confirma e, ao tocar de novo, aparecem 8 minutos restantes com a opção de desligar o timer"></video>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+            <figcaption>
+              <h4>Timer para dormir</h4>
+              <p>Durações predefinidas e uma opção de fim do episódio permitem que os ouvintes durmam ouvindo um programa sem perder onde pararam.</p>
+            </figcaption>
+          </figure>
+          <figure class="p3-player-demo">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home">
+              <span class="iphone__notch"></span>
+              <video id="player-scroll" src="../assets/trebel-podcast-player-scroll.mp4" poster="../assets/trebel-podcast-player-scroll-poster.jpg" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Show more expande a descrição do episódio; ao rolar para baixo, o player se recolhe em um mini player sob o cabeçalho, e ao rolar para cima o player completo volta"></video>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+            <figcaption>
+              <h4>Mini player</h4>
+              <p>A reprodução fica ao alcance enquanto as notas completas do episódio são lidas, então os ouvintes nunca perdem o controle do que está tocando.</p>
+            </figcaption>
+          </figure>
+          <figure class="p3-player-demo">
+            <div class="iphone"><div class="iphone__screen iphone__screen--home">
+              <span class="iphone__notch"></span>
+              <video id="player-speed" src="../assets/trebel-podcast-player-speed.mp4" poster="../assets/trebel-podcast-player-speed-poster.jpg" width="750" height="1624" data-play-in-view muted loop playsinline preload="metadata" aria-label="Velocidade de reprodução: o controle 1x abre uma action sheet, 1.5x é escolhido, o controle e uma snackbar confirmam, e a sheet mantém 1.5x destacado ao ser aberta de novo"></video>
+              <span class="iphone__home" aria-hidden="true"></span>
+            </div></div>
+            <figcaption>
+              <h4>Velocidade de reprodução</h4>
+              <p>Sete velocidades, de 0.5x a 2x, permitem que cada ouvinte avance por episódios longos no próprio ritmo.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ MORE PROJECTS ============ -->
+    <section class="section" id="more">
+      <div class="section-head">
+        <p class="eyebrow">Mais projetos</p>
+        <h2 class="display display--md">Outros <em>projetos</em></h2>
+      </div>
+      <div class="more-grid">
+        <a class="more-card" href="project-1.html">
+          <span class="thumb thumb--more motion-shot"><img src="../images/project-1-cover-bg.jpg" alt="Repensando a experiência de apostas — experiência de apostas no desktop e no celular">
+            <svg class="shot-bg" viewBox="0 0 2000 1500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="p1c-g1"><stop offset="0" stop-color="#e0194a" stop-opacity=".55"/><stop offset="1" stop-color="#e0194a" stop-opacity="0"/></radialGradient><radialGradient id="p1c-g2"><stop offset="0" stop-color="#6a2bd1" stop-opacity=".45"/><stop offset="1" stop-color="#6a2bd1" stop-opacity="0"/></radialGradient><mask id="p1c-m"><rect width="2000" height="1500" fill="#fff"/><rect x="80" y="272" width="1200" height="770" rx="22" fill="#000"/><rect x="1247" y="72" width="658" height="1362" rx="110" fill="#000"/></mask></defs><g mask="url(#p1c-m)"><ellipse class="shot-glow shot-glow--1" cx="1560" cy="1380" rx="840" ry="630" fill="url(#p1c-g1)"/><ellipse class="shot-glow shot-glow--2" cx="360" cy="180" rx="760" ry="570" fill="url(#p1c-g2)"/></g></svg><span class="shot-layer shot-layer--desk" style="left:4.600%;top:18.800%;width:58.500%;height:49.933%;border-radius:1.71% / 2.67%;background-image:url('../images/project-1-cover.webp');background-size:170.940% 200.267%;background-position:11.084% 37.550%;" aria-hidden="true"></span><span class="shot-layer shot-layer--phone" style="left:62.900%;top:5.533%;width:31.800%;height:89.200%;border-radius:15.72% / 7.47%;background-image:url('../images/project-1-cover.webp');background-size:314.465% 112.108%;background-position:92.229% 51.235%;" aria-hidden="true"></span></span>
+          <span class="more-title">Repensando a experiência de apostas</span>
+          <span class="meta">Pesquisa UX · Design de UI · Design system</span>
+        </a>
+        <a class="more-card" href="project-2.html">
+          <span class="thumb thumb--more"><video src="../assets/trebel-download-two-songs.mp4" poster="../assets/trebel-download-two-songs-poster.jpg" width="1280" height="960" data-play-in-view muted loop playsinline preload="metadata" aria-label="Monte sua lista, baixe uma vez só — mãos segurando um iPhone enquanto o TREBEL baixa duas músicas de uma fila de 8, com um anúncio exibido durante o download"></video></span>
+          <span class="more-title">Monte sua lista, baixe uma vez só</span>
+          <span class="meta">Pesquisa UX · App mobile · Design de produto</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER / CONTACT ============ -->
+  <footer class="footer" id="contact">
+    <span class="orb orb--footer" aria-hidden="true"></span>
+    <h2 class="display display--md">Vamos <em>trabalhar juntos</em></h2>
+    <p class="lead lead--center">Tem um projeto em mente? Fale comigo por qualquer um dos links abaixo.</p>
+
+    <ul class="contact-icons">
+      <li>
+        <a class="icon-btn" href="mailto:rgchuy@gmail.com?subject=Contato" data-email="rgchuy@gmail.com" aria-label="Enviar e-mail para rgchuy@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+        <span>E-mail</span>
+      </li>
+      <li>
+        <a class="icon-btn" href="https://www.linkedin.com/in/jes%C3%BAs-reyna-gonz%C3%A1lez-114232109/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3"/></svg>
+        </a>
+        <span>LinkedIn</span>
+      </li>
+      <li>
+        <a class="icon-btn" href="../Jesus-Reyna-Senior-UX-UI-Designer-CV.pdf" download aria-label="Baixar currículo (PDF)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>
+        </a>
+        <span>CV</span>
+      </li>
+    </ul>
+
+    <p class="meta">© <span id="year">2026</span> J. Reyna. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../script.js?v=29"></script>
+  <script>
+    // Filter demo: highlight the step that matches the video
+    document.querySelectorAll('[data-steps-for]').forEach(function (list) {
+      var v = document.getElementById(list.dataset.stepsFor), items = list.querySelectorAll('li');
+      v.addEventListener('timeupdate', function () {
+        var i = 0; items.forEach(function (li, k) { if (v.currentTime >= +li.dataset.from) i = k; });
+        items.forEach(function (li, k) { li.classList.toggle('is-active', k === i); });
+      });
+    });
+  </script>
+</body>
+</html>

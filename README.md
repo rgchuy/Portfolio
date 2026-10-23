@@ -7,6 +7,8 @@ Static site (no build step). Open `index.html` in a browser, or upload the folde
 - `project-1.html` … `project-4.html` — case-study pages (generated from one layout; edit each by hand)
 - `styles.css` — styling; tokens from `DESIGN-2.md` live in `:root`
 - `script.js` — header bubble-on-scroll behavior
+- `es/`, `pt/` — Spanish and Brazilian Portuguese versions, **generated** by `i18n/build.py` (don't edit by hand)
+- `i18n/strings.py` — every English text with its Spanish and Portuguese translation
 - `portfolio.zip` — the same files, zipped for download/sharing
 
 ## Editing checklist (placeholders to replace)
@@ -16,6 +18,12 @@ Static site (no build step). Open `index.html` in a browser, or upload the folde
 4. Work cards: four `<article class="card">` blocks. **Max 5 tags per card.**
    To show real images, replace the `<span class="thumb-label">` inside `.thumb` with `<img src="images/yourfile.jpg" alt="...">`.
 5. Contact links: footer `.contact-icons` — only Email is real (`rgchuy@gmail.com`); LinkedIn links to the real profile; GitHub, Instagram and Dribbble were removed.
+
+## Languages (EN / ES / PT)
+English pages at the root are the source. The header has an EN · ES · PT switcher that opens the same page (and section) in the other language.
+After changing English text in a page:
+1. Update (or add) its entry in `i18n/strings.py`.
+2. Run `python3 i18n/build.py` — it regenerates `es/` and `pt/`, and stops with a list of any English text it can no longer find, so nothing ships half-translated.
 
 ## Design notes
 - Palette: white, black, `#f6f6f6`, `#878787`; green `#189e48` only for the availability dot.
@@ -212,3 +220,5 @@ Static site (no build step). Open `index.html` in a browser, or upload the folde
 - 2026-10-23 — Home hero and CV title changed to "Senior UX/UI Designer".
 - 2026-10-23 — Alto role changed to Senior UX/UI Designer (CV and Project 1); CV renamed to Jesus-Reyna-Senior-UX-UI-Designer-CV.pdf.
 - 2026-10-23 — CV: the two Alto (Celerative) roles merged into one entry (Apr 2022 – Jun 2025).
+- 2026-10-23 — Site translated to Spanish (`es/`) and Brazilian Portuguese (`pt/`), with an EN · ES · PT switcher in the header; script.js messages follow the page language.
+- 2026-10-23 — Mobile header (≤560px): logo + Menu button opening a full-screen panel with Projects, Skills, Contact and large language buttons; desktop and tablet header unchanged.
