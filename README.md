@@ -222,3 +222,4 @@ After changing English text in a page:
 - 2026-10-23 — CV: the two Alto (Celerative) roles merged into one entry (Apr 2022 – Jun 2025).
 - 2026-10-23 — Site translated to Spanish (`es/`) and Brazilian Portuguese (`pt/`), with an EN · ES · PT switcher in the header; script.js messages follow the page language.
 - 2026-10-23 — Mobile header (≤560px): logo + Menu button opening a full-screen panel with Projects, Skills, Contact and large language buttons; desktop and tablet header unchanged.
+- 2026-10-26 — New one-page CV (Senior UX/UI & Product Designer) replaces the old one; file renamed to Jesus-Reyna-Senior-UX-UI-Product-Designer-CV.pdf.
