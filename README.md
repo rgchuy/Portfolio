@@ -223,3 +223,8 @@ After changing English text in a page:
 - 2026-10-23 — Site translated to Spanish (`es/`) and Brazilian Portuguese (`pt/`), with an EN · ES · PT switcher in the header; script.js messages follow the page language.
 - 2026-10-23 — Mobile header (≤560px): logo + Menu button opening a full-screen panel with Projects, Skills, Contact and large language buttons; desktop and tablet header unchanged.
 - 2026-10-26 — New one-page CV (Senior UX/UI & Product Designer) replaces the old one; file renamed to Jesus-Reyna-Senior-UX-UI-Product-Designer-CV.pdf.
+- 2026-10-27 — P2 What is TREBEL: Listen offline / Unlimited skips cards now use 2:1 phone close-ups (images/project-2-*-phone.jpg); ad headline only in the captions.
+- 2026-10-27 — P2 feature close-ups recentered: offline shows airplane + "listening offline" message; player shows carousel + controls.
+- 2026-10-27 — P2 feature cards zoomed out (taller crops shown whole on yellow) and captions slimmer.
+- 2026-10-27 — P2 feature cards: whole phone always visible (full-phone crops, contain, centered).
+- 2026-10-27 — P2 ads + features block: fixed 760px on desktop (centered, no horizontal stretch), cards 305x285, phone-to-cards gap ~47px, tops and bottoms aligned.
