@@ -1421,3 +1421,9 @@ main, .footer { max-width: 1400px; margin-inline: auto; padding-inline: var(--pa
   .tb-feature--open img { max-width: 100%; }
 }
 @media (min-width: 861px) { .tb-features--split { column-gap: 12px; } }
+/* Project 2 · "What is TREBEL?" below desktop: one column — ads phone first, then the two cards full width, one under the other */
+@media (max-width: 860px) {
+  .tb-features--split { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; row-gap: 14px; }
+  .tb-features__stack { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 14px; contain: none; }
+  .tb-ad-crop { width: min(72%, 400px); }
+}

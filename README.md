@@ -228,3 +228,4 @@ After changing English text in a page:
 - 2026-10-27 — P2 feature cards zoomed out (taller crops shown whole on yellow) and captions slimmer.
 - 2026-10-27 — P2 feature cards: whole phone always visible (full-phone crops, contain, centered).
 - 2026-10-27 — P2 ads + features block: fixed 760px on desktop (centered, no horizontal stretch), cards 305x285, phone-to-cards gap ~47px, tops and bottoms aligned.
+- 2026-10-27 — P2 ads + features block below desktop (≤860px): one column — ads phone first, then Listen offline and Unlimited skips cards full width, one under the other.
