@@ -234,3 +234,6 @@ After changing English text in a page:
 - 2026-10-29 — Footer (all languages): email shown as a pill (address + black "Copy email" button); below it only LinkedIn and CV. The Email icon button was removed.
 - 2026-10-29 — CV replaced with the latest Jesus-Reyna-Senior-UX-UI-Product-Designer-CV.pdf (all 12 pages link to it).
 - 2026-10-29 — Footer email pill made quieter: 15px address, light gray "Copy email" button (turns black on hover), soft border, almost no shadow.
+- 2026-10-29 — P3 library explorations: video replaced by a full-width carousel of the 16 exploration screens (images/project-3-explore-01..16.jpg) scrolling right to left, dimmed with a dark overlay, tag and "31 library explorations" on top. Pauses with reduced motion.
+- 2026-10-29 — P3 explorations carousel v2: the 31 original exports (Downloads/LIBRARY EXPLORATION) cropped to the same phone-screen size and scale (top of each screen, no tab bar over cut content); no box or edge fade; each screen dimmed on its own.
+- 2026-10-29 — P3 explorations carousel: screens brighter (brightness .7); "Exploration · Library modification" now a plain gray label above and "31 library explorations" plain gray text below (no pills, not CTA-like).
