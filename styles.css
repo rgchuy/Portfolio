@@ -1505,3 +1505,13 @@ strong:has(> .stat-cur) { white-space: nowrap; }
   .p3-explore--marquee .p3-explore__tag { transform: none; font-size: 11px; }
   .p3-explore--marquee figcaption { transform: none; font-size: 13px; }
 }
+/* Explorations carousel: soft fade at the left and right edges so the screens don't appear out of nowhere (no box) */
+.p3-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent); }
+@media (max-width: 560px) {
+  .p3-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent); }
+}
+/* Explorations carousel: shorter edge fade */
+.p3-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent); mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent); }
+@media (max-width: 560px) {
+  .p3-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+}

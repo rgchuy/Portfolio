@@ -76,7 +76,7 @@ STRINGS = [
    'content="Portfólio de J. Reyna: projetos selecionados, habilidades e informações de contato."'),
   ("Hi, I'm J. Reyna,<br>", 'Hola, soy J. Reyna,<br>', 'Olá, sou J. Reyna,<br>'),
   ('a Senior UX/UI Designer who brings<br class="br-wide">', 'diseñador UX/UI senior que aporta<br class="br-wide">', 'designer UX/UI sênior que traz<br class="br-wide">'),
-  ('<em>trusted clarity</em> into thoughtful digital products.', '<em>claridad y confianza</em> a productos digitales bien pensados.', '<em>clareza e confiança</em> a produtos digitais bem pensados.'),
+  ('<em>clarity</em> into thoughtful digital products.', '<em>claridad</em> a productos digitales bien pensados.', '<em>clareza</em> a produtos digitais bem pensados.'),
   ('I help companies identify areas of opportunity and bring clarity to how they communicate their value, balancing user needs, business goals and technical constraints to deliver solutions that are feasible to build and drive results.',
    'Ayudo a las empresas a identificar áreas de oportunidad y a comunicar su valor con claridad, equilibrando las necesidades de los usuarios, los objetivos de negocio y las limitaciones técnicas para entregar soluciones técnicamente viables que generan resultados.',
    'Ajudo empresas a identificar oportunidades e a comunicar seu valor com clareza, equilibrando as necessidades dos usuários, os objetivos de negócio e as restrições técnicas para entregar soluções tecnicamente viáveis que geram resultados.'),

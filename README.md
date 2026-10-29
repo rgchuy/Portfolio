@@ -237,3 +237,6 @@ After changing English text in a page:
 - 2026-10-29 — P3 library explorations: video replaced by a full-width carousel of the 16 exploration screens (images/project-3-explore-01..16.jpg) scrolling right to left, dimmed with a dark overlay, tag and "31 library explorations" on top. Pauses with reduced motion.
 - 2026-10-29 — P3 explorations carousel v2: the 31 original exports (Downloads/LIBRARY EXPLORATION) cropped to the same phone-screen size and scale (top of each screen, no tab bar over cut content); no box or edge fade; each screen dimmed on its own.
 - 2026-10-29 — P3 explorations carousel: screens brighter (brightness .7); "Exploration · Library modification" now a plain gray label above and "31 library explorations" plain gray text below (no pills, not CTA-like).
+- 2026-10-29 — Hero: "trusted" removed in all languages ("brings clarity into…", "aporta claridad a…", "traz clareza a…").
+- 2026-10-29 — P3 explorations carousel: soft fade at the left and right edges (no box), so screens fade in and out instead of appearing abruptly.
+- 2026-10-29 — P3 explorations carousel: edge fade shortened (4% each side on desktop, 7% on phones).
