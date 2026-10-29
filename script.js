@@ -372,7 +372,7 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
 // Email buttons: open the visitor's mail app (mailto) and also copy the address,
 // so it still works for people who use webmail and have no mail app set up.
 (function () {
-  var links = document.querySelectorAll('a[data-email]');
+  var links = document.querySelectorAll('a[data-email], button[data-copy-email]');
   if (!links.length) return;
   var toast;
   function show(msg) {
@@ -389,7 +389,7 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
   }
   links.forEach(function (a) {
     a.addEventListener('click', function () {
-      var addr = a.getAttribute('data-email');
+      var addr = a.getAttribute('data-email') || a.getAttribute('data-copy-email');
       var done = function () { show(T.emailCopied + addr); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(addr).then(done, function () { show(T.writeTo + addr); });

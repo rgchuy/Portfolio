@@ -1427,3 +1427,30 @@ main, .footer { max-width: 1400px; margin-inline: auto; padding-inline: var(--pa
   .tb-features__stack { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 14px; contain: none; }
   .tb-ad-crop { width: min(72%, 400px); }
 }
+.stat-cur { display: inline !important; font-size: .5em; margin-right: .2em; vertical-align: .55em; white-space: nowrap; }
+strong:has(> .stat-cur) { white-space: nowrap; }
+/* Footer: email pill (address to select by hand + Copy email button); LinkedIn and CV icons below */
+.email-pill { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; margin: 28px auto 8px; padding: 6px 6px 6px 24px;
+  background: #fff; border: 1px solid rgba(0, 0, 0, .08); border-radius: 999px; box-shadow: 0 10px 28px rgba(0, 0, 0, .08); position: relative; }
+.email-pill__addr { font-size: 18px; font-weight: 600; color: var(--color-ink); user-select: all; -webkit-user-select: all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.email-pill__btn { display: inline-flex; align-items: center; gap: 8px; flex: none; padding: 12px 20px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--color-ink); color: var(--color-gallery-white); font: inherit; font-size: 15px; font-weight: 600; box-shadow: 0 6px 16px rgba(0, 0, 0, .18); transition: transform .15s ease, box-shadow .15s ease; }
+.email-pill__btn svg { width: 18px; height: 18px; }
+.email-pill__btn:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0, 0, 0, .22); }
+.email-pill__btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+@media (max-width: 560px) {
+  .email-pill { gap: 8px; padding: 5px 5px 5px 16px; }
+  .email-pill__addr { font-size: 15px; }
+  .email-pill__btn { padding: 10px 14px; font-size: 14px; }
+}
+/* Footer email pill: quieter (smaller text, light button, no heavy shadow) */
+.email-pill { gap: 10px; margin: 22px auto 4px; padding: 4px 4px 4px 18px; box-shadow: 0 2px 8px rgba(0, 0, 0, .04); border-color: rgba(0, 0, 0, .1); }
+.email-pill__addr { font-size: 15px; font-weight: 500; }
+.email-pill__btn { gap: 6px; padding: 7px 14px; font-size: 13px; font-weight: 500; background: rgba(0, 0, 0, .06); color: var(--color-ink); box-shadow: none; }
+.email-pill__btn svg { width: 15px; height: 15px; }
+.email-pill__btn:hover { transform: none; box-shadow: none; background: var(--color-ink); color: var(--color-gallery-white); }
+@media (max-width: 560px) {
+  .email-pill { padding: 4px 4px 4px 14px; }
+  .email-pill__addr { font-size: 14px; }
+  .email-pill__btn { padding: 7px 12px; font-size: 13px; }
+}

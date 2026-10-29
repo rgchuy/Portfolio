@@ -229,3 +229,8 @@ After changing English text in a page:
 - 2026-10-27 — P2 feature cards: whole phone always visible (full-phone crops, contain, centered).
 - 2026-10-27 — P2 ads + features block: fixed 760px on desktop (centered, no horizontal stretch), cards 305x285, phone-to-cards gap ~47px, tops and bottoms aligned.
 - 2026-10-27 — P2 ads + features block below desktop (≤860px): one column — ads phone first, then Listen offline and Unlimited skips cards full width, one under the other.
+- 2026-10-29 — ES/PT copy review applied (i18n/strings.py, rebuilt with i18n/build.py): hero "claridad y confianza / clareza e confiança", clearer betslip text, P2 stats with US$, "lista de descargas (Download Queue)", new P3 title "Podcasts integrados en TREBEL / ao TREBEL", and more. "Color hero" kept as is. EN alt texts for the P2 phone cards updated in strings.py.
+- 2026-10-29 — Footer (all languages): email written out under the icons ("Or copy my email" + address + Copy button) so it can be copied by hand or with one click.
+- 2026-10-29 — Footer (all languages): email shown as a pill (address + black "Copy email" button); below it only LinkedIn and CV. The Email icon button was removed.
+- 2026-10-29 — CV replaced with the latest Jesus-Reyna-Senior-UX-UI-Product-Designer-CV.pdf (all 12 pages link to it).
+- 2026-10-29 — Footer email pill made quieter: 15px address, light gray "Copy email" button (turns black on hover), soft border, almost no shadow.
