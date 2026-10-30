@@ -1515,3 +1515,116 @@ strong:has(> .stat-cur) { white-space: nowrap; }
 @media (max-width: 560px) {
   .p3-marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
 }
+
+/* ============ Project 1 · Color tokens: odds accordion annotated with its color variables ============ */
+.tk { display: grid; gap: 28px; margin-top: 24px; }
+.tk-copy { display: grid; gap: 14px; max-width: 620px; }
+.tk-copy p:not(.eyebrow) { font-size: 16px; line-height: 1.6; color: #333; }
+.tk-stage { display: grid; gap: 18px; padding: 18px; border-radius: 24px; background: #F6F6F3; }
+
+/* controls: hidden until the intro has played */
+.tk-controls { display: grid; gap: 10px; opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.tk.is-ready .tk-controls { opacity: 1; transform: none; }
+.tk-skins { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -18px; padding: 2px 18px; }
+.tk-skins::-webkit-scrollbar { display: none; }
+.tk-skins button, .tk-cats button { font: inherit; border: 0; cursor: pointer; white-space: nowrap; }
+.tk-skins button { display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 7px 12px 7px 8px; border-radius: 999px; background: #fff; color: #333; font-size: 13px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08); }
+.tk-skins i { width: 14px; height: 14px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15); }
+.tk-skins button[aria-pressed="true"] { background: var(--color-ink); color: #fff; box-shadow: none; }
+.tk-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08); }
+.tk-cats button { position: relative; overflow: hidden; padding: 8px 6px; border-radius: 10px; background: transparent; color: #555; font-size: 13px; font-weight: 500; }
+.tk-cats button[aria-pressed="true"] { background: #EDEDE8; color: var(--color-ink); }
+.tk-cats button::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--color-ink); }
+.tk.is-auto .tk-cats button[aria-pressed="true"]::after { animation: tk-progress var(--tk-step, 3200ms) linear forwards; }
+@keyframes tk-progress { to { width: 100%; } }
+
+/* board: accordion + callouts (+ connector lines on wide screens) */
+.tk-board { position: relative; display: grid; gap: 14px; }
+.tk-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; display: none; }
+.tk-acc-wrap { position: relative; opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.tk.is-in .tk-acc-wrap { opacity: 1; transform: none; }
+
+/* the accordion (Figma: Accordion Container / Color skin · Mobile, 360px) */
+.tk-acc { --c-page: #0B101E; --c-card: #232B3F; --c-row-alt: #192136; --c-selected: #305B86; --c-b-accent: #418CE2; --c-b-card: #20456A; --c-b-odds: #7A93AA;
+  --c-t-primary: #FFFFFF; --c-t-selected: #FFFFFF; --c-t-action: #7A93AA; --c-t-odds: #D6D6D6; --c-i-primary: #FFFFFF; --c-i-action: #7A93AA;
+  font-family: 'Play', var(--font-body, sans-serif); background: var(--c-page); color: var(--c-t-primary); overflow: hidden; border-radius: 4px; }
+.tk-acc, .tk-acc * { transition: background-color .6s ease, border-color .6s ease, color .6s ease; }
+.tk-head { display: flex; align-items: center; gap: 10px; height: 45px; padding: 0 7px 0 8px; border-bottom: 1px solid var(--c-b-accent); font-size: 12px; }
+.tk-spacer { flex: 1; }
+.tk-ico { display: block; flex: none; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: background-color .6s ease; }
+.tk-ico--league { --m: url(images/tokens/nfl-helmet.svg); width: 24px; height: 24px; background: var(--c-i-primary); }
+.tk-ico--collapse { --m: url(images/tokens/collapse.svg); width: 24px; height: 24px; background: var(--c-b-accent); }
+.tk-ico--chev { --m: url(images/tokens/chevron-right.svg); width: 8px; height: 14px; background: var(--c-i-action); }
+.tk-body { padding: 10px 7px 10px 8px; }
+.tk-card { border: 1px solid var(--c-b-card); border-radius: 8px; overflow: hidden; }
+.tk-row { display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 8px 0 7px; background: var(--c-card); }
+.tk-row--alt { background: var(--c-row-alt); }
+.tk-logo { flex: none; width: 24px; display: grid; place-items: center; }
+.tk-logo img { display: block; width: 24px; height: auto; }
+.tk-team { flex: 1; min-width: 0; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tk-odds { display: flex; gap: 5px; flex: none; }
+.tk-odd { display: grid; place-items: center; width: 62px; height: 36px; border: 1px solid var(--c-b-odds); border-radius: 8px; background: var(--c-card); color: var(--c-t-odds); font-size: 13px; line-height: 15px; text-align: center; }
+.tk-odd--sel { background: var(--c-selected); border-color: var(--c-b-accent); color: var(--c-t-selected); font-weight: 700; }
+.tk-foot { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 12px 0 7px; background: var(--c-card); font-size: 13px; }
+.tk-more { display: inline-flex; align-items: center; gap: 14px; }
+.tk-more > span:first-child { color: var(--c-t-action); font-weight: 700; text-decoration: underline; }
+@media (max-width: 380px) { .tk-odd { width: 54px; font-size: 12px; } .tk-team { font-size: 13px; } }
+
+/* callouts */
+.tk-notes { display: contents; }
+.tk-notes--list { display: grid; gap: 8px; }
+.tk-note { display: flex; align-items: center; gap: 10px; padding: 8px 12px 8px 8px; border-radius: 12px; background: #fff; box-shadow: 0 1px 0 rgba(0, 0, 0, .04), inset 0 0 0 1px rgba(0, 0, 0, .06);
+  opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; transition-delay: calc(var(--i, 0) * 90ms); }
+.tk-note.is-on { opacity: 1; transform: none; }
+.tk-note__num { flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--color-ink); color: #fff; font-size: 11px; font-weight: 700; }
+.tk-note__sw { flex: none; width: 22px; height: 22px; border-radius: 6px; background: var(--sw); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12); transition: background-color .6s ease; }
+.tk-note__txt { display: grid; min-width: 0; }
+.tk-note code { font-family: 'Play', ui-monospace, monospace; font-size: 13px; color: var(--color-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tk-note small { font-size: 11.5px; color: var(--color-quiet-gray); }
+
+/* numbered markers on the accordion (phones) / small anchors at the end of each line (wide screens) */
+.tk-mark { position: absolute; z-index: 2; display: grid; place-items: center; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--color-ink); color: #fff; font: 700 10px/1 var(--font-body, sans-serif);
+  box-shadow: 0 0 0 2px #fff; opacity: 0; transform: scale(.4); transition: opacity .3s ease, transform .3s ease; transition-delay: calc(var(--i, 0) * 90ms + 150ms); pointer-events: none; }
+.tk-mark.is-on { opacity: 1; transform: none; }
+
+/* iPad and desktop: callouts around the component, joined to it by lines (like the Figma annotations) */
+@media (min-width: 900px) {
+  .tk-stage { padding: 28px 32px 32px; gap: 26px; }
+  .tk-controls { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; }
+  .tk-skins { margin: 0; padding: 2px; flex-wrap: wrap; }
+  .tk-cats { width: 380px; }
+  .tk-board { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); grid-template-areas: ". top" "left acc" ". bottom"; column-gap: 64px; row-gap: 44px; align-items: center; }
+  .tk-notes { display: flex; gap: 14px; min-height: 52px; }
+  .tk-notes--top { grid-area: top; justify-content: flex-end; align-items: flex-end; }
+  .tk-notes--left { grid-area: left; flex-direction: column; justify-content: center; }
+  .tk-notes--bottom { grid-area: bottom; justify-content: flex-start; align-items: flex-start; }
+  .tk-acc-wrap { grid-area: acc; }
+  .tk-lines { display: block; }
+  .tk-note__num { display: none; }
+  .tk-mark { width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; background: #fff; box-shadow: 0 0 0 1.5px var(--color-ink); font-size: 0; }
+  .tk-lines path { fill: none; stroke: var(--color-ink); stroke-width: 1.2; stroke-dasharray: var(--len); stroke-dashoffset: var(--len); transition: stroke-dashoffset .5s ease; transition-delay: calc(var(--i, 0) * 90ms + 100ms); }
+  .tk-lines path.is-on { stroke-dashoffset: 0; }
+  /* desktop accordion (Figma: Accordion container) */
+  .tk-head { height: 52px; padding: 0 14px 0 14px; font-size: 15px; gap: 12px; }
+  .tk-ico--league, .tk-ico--collapse { width: 28px; height: 28px; }
+  .tk-body { padding: 10px 12px; }
+  .tk-row { height: 54px; padding: 0 12px 0 14px; gap: 12px; }
+  .tk-logo, .tk-logo img { width: 28px; }
+  .tk-team { font-size: 16px; }
+  .tk-odds { gap: 8px; }
+  .tk-odd { width: clamp(76px, 9vw, 120px); height: 40px; font-size: 14px; line-height: 16px; }
+  .tk-foot { height: 44px; padding: 0 16px 0 14px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tk-acc-wrap, .tk-controls, .tk-note, .tk-mark, .tk-lines path { transition: none !important; }
+  .tk.is-auto .tk-cats button[aria-pressed="true"]::after { animation: none; }
+}
+/* phones: markers sit just outside the edge they point to, so they cover less of the component */
+@media (max-width: 899px) {
+  .tk-mark[data-side="top"] { margin-top: -15px; }
+  .tk-mark[data-side="bottom"] { margin-top: -3px; }
+  .tk-mark[data-side="left"] { margin-left: -4px; }
+}
+@media (min-width: 600px) and (max-width: 899px) { .tk-notes--list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 899px) { .tk-mark[data-side="left"] { margin-left: -9px; } }
+.tk-skins { position: relative; }

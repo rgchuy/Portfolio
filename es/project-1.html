@@ -7,8 +7,8 @@
   <meta name="description" content="Un recorrido por el rediseño de las apuestas para los jugadores de un sportsbook: el mapeo del flujo anterior, su reconstrucción en torno a una sola pantalla flexible y su adaptación a móvil y a los temas de color de cada marca.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=141">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@400;500;700&family=Inter:wght@400&family=Play:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=145">
 </head>
 <body class="has-orbs" style="--project-color: #e0243a;">
 
@@ -261,6 +261,91 @@
           </figure>
         </article>
 
+        <!-- Color tokens: the odds accordion annotated with its color variables; plays on its own, visitor can switch skin and token type -->
+        <article class="tk" data-tokens>
+          <div class="tk-copy">
+            <p class="eyebrow">Tokens de color</p>
+            <h3 class="display display--md">Un componente, <em>siete temas de color</em></h3>
+            <p>Cada tema de color se construyó sobre el mismo conjunto de variables de color, agrupadas por función: superficie, borde, texto e ícono. Al cambiar de tema se actualizan todas las variables a la vez, así el acordeón de cuotas mantiene su estructura y su contraste en cada marca.</p>
+          </div>
+
+          <div class="tk-stage">
+            <div class="tk-controls" aria-label="Tema de color y tipo de token">
+              <div class="tk-skins" role="group" aria-label="Tema de color">
+                <button type="button" data-skin="ocean" aria-pressed="true"><i style="--sw:#418CE2"></i>Ocean Blue</button>
+                <button type="button" data-skin="red" aria-pressed="false"><i style="--sw:#C92A38"></i>Dark Red</button>
+                <button type="button" data-skin="forest" aria-pressed="false"><i style="--sw:#97C15C"></i>Forest</button>
+                <button type="button" data-skin="gold" aria-pressed="false"><i style="--sw:#BAAC71"></i>Gold</button>
+                <button type="button" data-skin="autumn" aria-pressed="false"><i style="--sw:#F19D38"></i>Autumn</button>
+                <button type="button" data-skin="sapphire" aria-pressed="false"><i style="--sw:#041441"></i>Sapphire</button>
+                <button type="button" data-skin="sky" aria-pressed="false"><i style="--sw:#DEE1E7"></i>Blue Sky</button>
+              </div>
+              <div class="tk-cats" role="group" aria-label="Tipo de token">
+                <button type="button" data-cat="surface" aria-pressed="true">Superficie</button>
+                <button type="button" data-cat="border" aria-pressed="false">Borde</button>
+                <button type="button" data-cat="text" aria-pressed="false">Texto</button>
+                <button type="button" data-cat="icon" aria-pressed="false">Ícono</button>
+              </div>
+            </div>
+
+            <div class="tk-board">
+              <div class="tk-notes tk-notes--top"></div>
+              <div class="tk-notes tk-notes--left"></div>
+              <div class="tk-acc-wrap">
+                <div class="tk-acc" data-tk-acc role="img" aria-label="Acordeón de cuotas de un partido de la NFL, Baltimore Ravens contra Kansas City Chiefs, con el total over seleccionado">
+                  <div class="tk-head" data-t="head">
+                    <span class="tk-ico tk-ico--league" data-t="league-icon"></span>
+                    <b data-t="league">NFL</b>
+                    <span class="tk-spacer"></span>
+                    <b>SEP 05</b>
+                    <span class="tk-ico tk-ico--collapse" data-t="collapse"></span>
+                  </div>
+                  <div class="tk-body">
+                    <div class="tk-card" data-t="card">
+                      <div class="tk-row" data-t="row">
+                        <span class="tk-logo"><img src="../images/tokens/ravens.png" width="144" height="88" alt=""></span>
+                        <span class="tk-team">BAL Ravens</span>
+                        <span class="tk-odds"><span class="tk-odd" data-t="odd">+3<br>-120</span><span class="tk-odd tk-odd--sel" data-t="selected">O46½<br>-110</span><span class="tk-odd">+130</span></span>
+                      </div>
+                      <div class="tk-row tk-row--alt" data-t="row-alt">
+                        <span class="tk-logo"><img src="../images/tokens/chiefs.svg" width="48" height="29" alt=""></span>
+                        <span class="tk-team">KC Chiefs</span>
+                        <span class="tk-odds"><span class="tk-odd">-3EV</span><span class="tk-odd" data-t="odd-2">u46½<br>-110</span><span class="tk-odd">-150</span></span>
+                      </div>
+                      <div class="tk-foot" data-t="footer">
+                        <span class="tk-more"><span data-t="see-more">SEE MORE</span><span class="tk-ico tk-ico--chev" data-t="arrow"></span></span>
+                        <b>8:20 PM</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tk-notes tk-notes--bottom"></div>
+              <svg class="tk-lines" aria-hidden="true"></svg>
+            </div>
+
+            <!-- Callouts per token type: data-target is the element the line points to, data-side where the callout sits on wide screens -->
+            <ol class="tk-src" hidden>
+              <li data-cat="surface" data-token="surface-page" data-target="head" data-side="left" data-ax="0" data-ay=".5"><code>color-surface-page</code><span>encabezado y página</span></li>
+              <li data-cat="surface" data-token="surface-card" data-target="row" data-side="left" data-ax="0" data-ay=".5"><code>color-surface-card</code><span>filas y pie</span></li>
+              <li data-cat="surface" data-token="surface-row-alt" data-target="row-alt" data-side="left" data-ax="0" data-ay=".5"><code>color-surface-row-alt</code><span>fila alterna</span></li>
+              <li data-cat="surface" data-token="surface-card" data-target="footer" data-side="left" data-ax="0" data-ay=".5"><code>color-surface-card</code><span>pie</span></li>
+              <li data-cat="surface" data-token="surface-selected" data-target="selected" data-side="top" data-ax=".5" data-ay="0"><code>color-surface-selected</code><span>cuota seleccionada</span></li>
+              <li data-cat="border" data-token="border-accent" data-target="head" data-side="left" data-ax="0" data-ay="1"><code>color-border-accent</code><span>línea del encabezado</span></li>
+              <li data-cat="border" data-token="border-card" data-target="card" data-side="left" data-ax="0" data-ay=".85"><code>color-border-card</code><span>contorno de la tarjeta</span></li>
+              <li data-cat="border" data-token="border-odds" data-target="odd" data-side="top" data-ax=".5" data-ay="0"><code>color-border-odds</code><span>contorno de la cuota</span></li>
+              <li data-cat="border" data-token="border-accent" data-target="selected" data-side="top" data-ax=".5" data-ay="0"><code>color-border-accent</code><span>contorno seleccionado</span></li>
+              <li data-cat="text" data-token="text-primary" data-target="league" data-side="top" data-ax=".5" data-ay="0"><code>color-text-primary</code><span>liga, fecha, equipos, hora</span></li>
+              <li data-cat="text" data-token="text-selected" data-target="selected" data-side="top" data-ax=".5" data-ay="0"><code>color-text-selected</code><span>cuota seleccionada</span></li>
+              <li data-cat="text" data-token="text-action" data-target="see-more" data-side="bottom" data-ax=".5" data-ay="1"><code>color-text-action</code><span>enlace “see more”</span></li>
+              <li data-cat="text" data-token="text-odds" data-target="odd-2" data-side="bottom" data-ax=".5" data-ay="1"><code>color-text-odds</code><span>texto de la cuota</span></li>
+              <li data-cat="icon" data-token="icon-primary" data-target="league-icon" data-side="left" data-ax="0" data-ay=".5"><code>color-icon-primary</code><span>ícono de la liga</span></li>
+              <li data-cat="icon" data-token="border-accent" data-target="collapse" data-side="top" data-ax=".5" data-ay="0"><code>color-border-accent</code><span>flecha para contraer</span></li>
+              <li data-cat="icon" data-token="icon-action" data-target="arrow" data-side="bottom" data-ax=".5" data-ay="1"><code>color-icon-action</code><span>flecha de “see more”</span></li>
+            </ol>
+          </div>
+        </article>
+
         <!-- Real color theme personalization: video + short story -->
         <article class="slider-row">
           <h3>Personalización real de temas de color</h3>
@@ -270,6 +355,7 @@
           <p class="row-text">Las solicitudes de más personalización llegaban constantemente al equipo de atención al cliente: los agentes querían que el color tuviera un papel real en sus sitios. Antes, un tema solo podía alternar entre blanco y negro, con un color de hero apenas visible. Ahora el color está profundamente integrado en la personalización de temas y lleva la paleta de cada marca a botones, selecciones, pestañas y el betslip.</p>
 
         </article>
+
 
       </div>
     </section>
@@ -349,6 +435,6 @@
     <p class="meta">© <span id="year">2026</span> J. Reyna. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="../script.js?v=30"></script>
+  <script src="../script.js?v=34"></script>
 </body>
 </html>

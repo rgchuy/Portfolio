@@ -399,3 +399,159 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
     });
   });
 })();
+
+// Project 1 · color tokens: the accordion slides in, then its callouts, then the controls.
+// It plays on its own (token types of one skin, then the next skin) until the visitor picks
+// a skin or a token type; it resumes after a few idle seconds.
+(function () {
+  var root = document.querySelector('[data-tokens]');
+  if (!root) return;
+  var SKINS = {
+    ocean:    { 'surface-page': '#0B101E', 'surface-card': '#232B3F', 'surface-row-alt': '#192136', 'surface-selected': '#305B86', 'border-accent': '#418CE2', 'border-card': '#20456A', 'border-odds': '#7A93AA', 'text-primary': '#FFFFFF', 'text-selected': '#FFFFFF', 'text-action': '#7A93AA', 'text-odds': '#D6D6D6', 'icon-primary': '#FFFFFF', 'icon-action': '#7A93AA' },
+    red:      { 'surface-page': '#0B101E', 'surface-card': '#222631', 'surface-row-alt': '#1B1E27', 'surface-selected': '#851F33', 'border-accent': '#C92A38', 'border-card': '#3A3D45', 'border-odds': '#A7A7A7', 'text-primary': '#FFFFFF', 'text-selected': '#FFFFFF', 'text-action': '#A7A7A7', 'text-odds': '#D6D6D6', 'icon-primary': '#FFFFFF', 'icon-action': '#A7A7A7' },
+    forest:   { 'surface-page': '#323030', 'surface-card': '#403F3F', 'surface-row-alt': '#1F1F21', 'surface-selected': '#506A1C', 'border-accent': '#97C15C', 'border-card': '#555555', 'border-odds': '#A7A7A7', 'text-primary': '#FFFFFF', 'text-selected': '#FFFFFF', 'text-action': '#A7A7A7', 'text-odds': '#D6D6D6', 'icon-primary': '#FFFFFF', 'icon-action': '#A7A7A7' },
+    gold:     { 'surface-page': '#F0F1F3', 'surface-card': '#FFFFFF', 'surface-row-alt': '#D1D1D1', 'surface-selected': '#B0A88D', 'border-accent': '#BAAC71', 'border-card': '#B0A88D', 'border-odds': '#515661', 'text-primary': '#000000', 'text-selected': '#000000', 'text-action': '#515661', 'text-odds': '#000000', 'icon-primary': '#000000', 'icon-action': '#515661' },
+    autumn:   { 'surface-page': '#191919', 'surface-card': '#403F3F', 'surface-row-alt': '#272727', 'surface-selected': '#9A6421', 'border-accent': '#F19D38', 'border-card': '#6E6D6D', 'border-odds': '#A7A7A7', 'text-primary': '#FFFFFF', 'text-selected': '#FFFFFF', 'text-action': '#A7A7A7', 'text-odds': '#D6D6D6', 'icon-primary': '#FFFFFF', 'icon-action': '#A7A7A7' },
+    sapphire: { 'surface-page': '#041441', 'surface-card': '#51596B', 'surface-row-alt': '#484E5F', 'surface-selected': '#851F33', 'border-accent': '#C92A38', 'border-card': '#818FB4', 'border-odds': '#FFFFFF', 'text-primary': '#FFFFFF', 'text-selected': '#FFFFFF', 'text-action': '#FFFFFF', 'text-odds': '#D6D6D6', 'icon-primary': '#FFFFFF', 'icon-action': '#FFFFFF' },
+    sky:      { 'surface-page': '#DEE1E7', 'surface-card': '#F0F1F3', 'surface-row-alt': '#D7DEE4', 'surface-selected': '#20456A', 'border-accent': '#418CE2', 'border-card': '#5D80C8', 'border-odds': '#20456A', 'text-primary': '#20456A', 'text-selected': '#F0F1F3', 'text-action': '#20456A', 'text-odds': '#20456A', 'icon-primary': '#20456A', 'icon-action': '#20456A' }
+  };
+  var VARS = { 'surface-page': '--c-page', 'surface-card': '--c-card', 'surface-row-alt': '--c-row-alt', 'surface-selected': '--c-selected', 'border-accent': '--c-b-accent', 'border-card': '--c-b-card', 'border-odds': '--c-b-odds', 'text-primary': '--c-t-primary', 'text-selected': '--c-t-selected', 'text-action': '--c-t-action', 'text-odds': '--c-t-odds', 'icon-primary': '--c-i-primary', 'icon-action': '--c-i-action' };
+  var SKIN_ORDER = ['ocean', 'red', 'forest', 'gold', 'autumn', 'sapphire', 'sky'];
+  var CAT_ORDER = ['surface', 'border', 'text', 'icon'];
+  var STEP = 3200, IDLE = 8000;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wide = window.matchMedia('(min-width: 900px)');
+
+  var acc = root.querySelector('[data-tk-acc]');
+  var wrap = root.querySelector('.tk-acc-wrap');
+  var board = root.querySelector('.tk-board');
+  var svg = root.querySelector('.tk-lines');
+  var boxes = { top: root.querySelector('.tk-notes--top'), left: root.querySelector('.tk-notes--left'), bottom: root.querySelector('.tk-notes--bottom') };
+  var src = [].slice.call(root.querySelectorAll('.tk-src li'));
+  var skinBtns = [].slice.call(root.querySelectorAll('[data-skin]'));
+  var catBtns = [].slice.call(root.querySelectorAll('.tk-cats [data-cat]'));
+  var state = { skin: 'ocean', cat: 'surface' }, notes = [], marks = [], timer = null, idleTimer = null, started = false;
+  root.style.setProperty('--tk-step', STEP + 'ms');
+
+  function paintSkin() {
+    var s = SKINS[state.skin];
+    Object.keys(VARS).forEach(function (k) { acc.style.setProperty(VARS[k], s[k]); });
+    notes.forEach(function (n) {
+      var hex = s[n.dataset.token];
+      n.querySelector('.tk-note__sw').style.setProperty('--sw', hex);
+      n.querySelector('.tk-hex').textContent = hex;
+    });
+    skinBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.skin === state.skin)); });
+    var on = root.querySelector('.tk-skins [aria-pressed="true"]'), strip = on.parentNode; // keep the active skin in view on phones
+    if (strip.scrollWidth > strip.clientWidth) strip.scrollTo({ left: on.offsetLeft - (strip.clientWidth - on.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  function anchorOf(li) {
+    var t = acc.querySelector('[data-t="' + li.dataset.target + '"]');
+    var b = board.getBoundingClientRect(), r = t.getBoundingClientRect();
+    return { x: r.left - b.left + r.width * parseFloat(li.dataset.ax), y: r.top - b.top + r.height * parseFloat(li.dataset.ay) };
+  }
+
+  function drawLines() {
+    svg.innerHTML = '';
+    var b = board.getBoundingClientRect();
+    marks.forEach(function (m, i) {
+      var a = anchorOf(m.li);
+      if (!wide.matches && m.li.dataset.side === 'left') a.x = acc.getBoundingClientRect().left - b.left; // phones: on the component's outer edge
+      m.el.style.left = a.x + 'px'; m.el.style.top = a.y + 'px';
+      if (!wide.matches) return;
+      var r = notes[i].getBoundingClientRect(), side = m.li.dataset.side, d;
+      if (side === 'left') {
+        var sx = r.right - b.left, sy = r.top - b.top + r.height / 2, mx = sx + (a.x - sx) * .55;
+        d = 'M' + sx + ' ' + sy + ' H' + mx + ' V' + a.y + ' H' + a.x;
+      } else {
+        var cx = r.left - b.left + r.width / 2, cy = side === 'top' ? r.bottom - b.top : r.top - b.top, my = cy + (a.y - cy) * .5;
+        d = 'M' + cx + ' ' + cy + ' V' + my + ' H' + a.x + ' V' + a.y;
+      }
+      var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      p.setAttribute('d', d);
+      p.style.setProperty('--i', i);
+      svg.appendChild(p);
+      var len = p.getTotalLength();
+      p.style.setProperty('--len', len);
+      if (m.el.classList.contains('is-on')) {
+        if (reduce) p.classList.add('is-on'); else requestAnimationFrame(function () { requestAnimationFrame(function () { p.classList.add('is-on'); }); });
+      }
+    });
+  }
+
+  function render(animate) {
+    notes.forEach(function (n) { n.remove(); });
+    marks.forEach(function (m) { m.el.remove(); });
+    notes = []; marks = [];
+    var list = src.filter(function (li) { return li.dataset.cat === state.cat; });
+    list.forEach(function (li, i) {
+      var n = document.createElement('div');
+      n.className = 'tk-note';
+      n.dataset.token = li.dataset.token;
+      n.style.setProperty('--i', i);
+      n.innerHTML = '<span class="tk-note__num">' + (i + 1) + '</span><span class="tk-note__sw"></span><span class="tk-note__txt">'
+        + li.querySelector('code').outerHTML + '<small><span class="tk-hex"></span> · ' + li.querySelector('span').innerHTML + '</small></span>';
+      (wide.matches ? boxes[li.dataset.side] : boxes.bottom).appendChild(n);
+      notes.push(n);
+      var m = document.createElement('span');
+      m.className = 'tk-mark';
+      m.textContent = i + 1;
+      m.dataset.side = li.dataset.side;
+      m.style.setProperty('--i', i);
+      board.appendChild(m);
+      marks.push({ el: m, li: li });
+    });
+    boxes.bottom.classList.toggle('tk-notes--list', !wide.matches);
+    catBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === state.cat)); });
+    paintSkin();
+    var show = function () {
+      notes.concat(marks.map(function (m) { return m.el; })).forEach(function (el) { el.classList.add('is-on'); });
+      drawLines();
+    };
+    drawLines();
+    if (animate && !reduce) requestAnimationFrame(function () { requestAnimationFrame(show); }); else show();
+  }
+
+  // autoplay: next token type; after the last one, next skin
+  function tick() {
+    var ci = CAT_ORDER.indexOf(state.cat);
+    if (ci === CAT_ORDER.length - 1) {
+      state.cat = CAT_ORDER[0];
+      state.skin = SKIN_ORDER[(SKIN_ORDER.indexOf(state.skin) + 1) % SKIN_ORDER.length];
+    } else {
+      state.cat = CAT_ORDER[ci + 1];
+    }
+    restartProgress();
+    render(true);
+  }
+  function restartProgress() { root.classList.remove('is-auto'); void root.offsetWidth; if (timer) root.classList.add('is-auto'); }
+  function play() { if (reduce || timer) return; timer = setInterval(tick, STEP); restartProgress(); }
+  function stop() { clearInterval(timer); timer = null; root.classList.remove('is-auto'); }
+  function userPick() { stop(); clearTimeout(idleTimer); idleTimer = setTimeout(play, IDLE); }
+
+  skinBtns.forEach(function (b) { b.addEventListener('click', function () { state.skin = b.dataset.skin; userPick(); paintSkin(); }); });
+  catBtns.forEach(function (b) { b.addEventListener('click', function () { state.cat = b.dataset.cat; userPick(); render(true); }); });
+
+  // intro: accordion → callouts → controls, then autoplay; pauses while off screen
+  function start() {
+    started = true;
+    root.classList.add('is-in');
+    setTimeout(function () { render(true); }, reduce ? 0 : 650);
+    setTimeout(function () { root.classList.add('is-ready'); play(); }, reduce ? 0 : 1700);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { if (!started) start(); else if (!idleTimer || !timer) play(); }
+        else stop();
+      });
+    }, { threshold: .35 }).observe(wrap);
+  } else { start(); }
+
+  var raf;
+  function relayout() { cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { if (started) render(false); }); }
+  window.addEventListener('resize', relayout);
+  if (wide.addEventListener) wide.addEventListener('change', relayout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+})();

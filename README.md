@@ -240,3 +240,5 @@ After changing English text in a page:
 - 2026-10-29 — Hero: "trusted" removed in all languages ("brings clarity into…", "aporta claridad a…", "traz clareza a…").
 - 2026-10-29 — P3 explorations carousel: soft fade at the left and right edges (no box), so screens fade in and out instead of appearing abruptly.
 - 2026-10-29 — P3 explorations carousel: edge fade shortened (4% each side on desktop, 7% on phones).
+- 2026-10-30 — P1 new "Color tokens · One component, seven color skins" section (after Real color theme personalization), built from Figma ABI-MOD-DesignSystem (node 8401:130014): the odds accordion (Play font, assets in images/tokens/) with token callouts for Surface, Border, Text and Icon across the 7 skins. Intro: accordion → callouts → controls; then autoplays token types, then the next skin; picking a skin or type pauses it for 8 s. Phones/iPad portrait: numbered markers + callout list; ≥900px: callouts around the component with connector lines. ES/PT strings in i18n/strings.py.
+- 2026-10-30 — P1 color tokens section moved before "Real color theme personalization" (all languages).
