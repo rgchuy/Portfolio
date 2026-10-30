@@ -214,7 +214,6 @@ STRINGS = [
   ('1Bettor betslip on a phone switching between bet types while the picks stay on screen',
    'Betslip de 1Bettor en un teléfono cambiando entre tipos de apuesta mientras las selecciones permanecen en pantalla',
    'Betslip da 1Bettor em um celular alternando entre tipos de aposta enquanto as seleções continuam na tela'),
-  ('<h3>Real color theme personalization</h3>', '<h3>Personalización real de temas de color</h3>', '<h3>Personalização real de temas de cor</h3>'),
   ("Before and after of the 1Bettor mobile site: the old dark theme with a limited set of hero colors, then the new site carrying each brand's palette through personalized color themes",
    'Antes y después del sitio móvil de 1Bettor: el tema oscuro anterior con un conjunto limitado de colores para el hero, y luego el nuevo sitio que lleva la paleta de cada marca a través de temas de color personalizados',
    'Antes e depois do site mobile da 1Bettor: o tema escuro antigo com um conjunto limitado de cores para o hero, e depois o novo site levando a paleta de cada marca por meio de temas de cor personalizados'),
