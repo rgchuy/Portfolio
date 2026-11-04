@@ -4,6 +4,7 @@
 
 STRINGS = [
   # ---------- Shared: header, footer, project facts, more work ----------
+  ('Jesus-Reyna-Senior-UX-UI-Product-Designer-CV.pdf', 'Jesus-Reyna-Senior-UX-UI-Product-Designer-CV-ES.pdf', 'Jesus-Reyna-Senior-UX-UI-Product-Designer-CV-PT.pdf'),
   ('<title>J. Reyna — Portfolio</title>', '<title>J. Reyna — Portafolio</title>', '<title>J. Reyna — Portfólio</title>'),
   ('aria-label="Primary"', 'aria-label="Principal"', 'aria-label="Principal"'),
   ('>Work</a>', '>Proyectos</a>', '>Projetos</a>'),
