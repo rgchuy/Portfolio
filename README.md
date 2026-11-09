@@ -245,3 +245,4 @@ After changing English text in a page:
 - 2026-10-30 — Project 1: removed the "Real color theme personalization" heading (EN/ES/PT); the before/after video and its text stay.
 - 2026-11-01 — Home hero: "thoughtful digital products" → "complex digital products" (ES "productos digitales complejos", PT "produtos digitais complexos").
 - 2026-11-04 — One CV per language: EN pages link the English CV without location or phone, es/ the Mexico CV (-ES), pt/ the Brazil CV (-PT).
+- 2026-11-09 — Skills (EN/ES/PT): shortened Responsive Web, iOS & Android and Design System Documentation; added Prototyping, Accessibility (WCAG), A/B Testing, Stakeholder Alignment and Agile (Scrum, Jira).
