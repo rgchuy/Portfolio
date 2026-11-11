@@ -266,7 +266,8 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
       if (entry.isIntersecting) {
         if (!v.dataset.started) { v.currentTime = 0; v.dataset.started = 'true'; }
         var p = v.play();
-        if (p && p.catch) p.catch(function () {});
+        // Autoplay can be blocked (e.g. iOS Low Power Mode): show the controls so it can still be played by tap.
+        if (p && p.catch) p.catch(function () { v.controls = true; });
       } else {
         v.pause();
       }

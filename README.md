@@ -247,3 +247,4 @@ After changing English text in a page:
 - 2026-11-04 — One CV per language: EN pages link the English CV without location or phone, es/ the Mexico CV (-ES), pt/ the Brazil CV (-PT).
 - 2026-11-09 — Skills (EN/ES/PT): shortened Responsive Web, iOS & Android and Design System Documentation; added Prototyping, Accessibility (WCAG), A/B Testing, Stakeholder Alignment and Agile (Scrum, Jira).
 - 2026-11-10 — Home hero title: "Senior UX/UI & Product Designer" (ES "diseñador UX/UI y de producto senior", PT "designer UX/UI e de produto sênior"); project Role fields unchanged.
+- 2026-11-11 — Mobile animation review: Project 3 filter demo shows its steps above a narrower video on phones, so the highlighted step and the video are on screen together; videos that cannot autoplay (e.g. iOS Low Power Mode) now show their controls. Every page audited on mobile: videos play in view, reveals and Project 2 / Project 1 animations trigger, no horizontal scroll.

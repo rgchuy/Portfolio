@@ -1321,7 +1321,10 @@ main, .footer { max-width: 1400px; margin-inline: auto; padding-inline: var(--pa
 @media (max-width: 560px) {
   .p3-states-compare { gap: 16px 12px; }
   .p3-states--row { grid-template-columns: minmax(0, 1fr); }
-  .p3-filter-row { grid-template-columns: minmax(0, 1fr); }
+  /* Steps above a narrower video, so the highlighted step and the video fit on screen together. */
+  .p3-filter-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .p3-filter-copy { order: -1; gap: 10px; }
+  .p3-filter-row > .p3-slot { width: min(100%, 290px); justify-self: center; }
 }
 .p3-ep-stack { position: relative; margin: 28px 0 0; aspect-ratio: 750 / 1234; }
 .p3-ep-stack > img { position: absolute; left: 0; top: var(--y); transform: translateY(-50%); width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 12px 32px -8px rgba(0, 0, 0, .22); }
