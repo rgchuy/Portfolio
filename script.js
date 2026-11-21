@@ -566,6 +566,14 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
   var GA_ID = 'G-WFDE5DEJE1';     // Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ'
   var CLARITY_ID = '';  // Microsoft Clarity project ID
   if (!GA_ID && !CLARITY_ID) return;
+  // Owner's test visits: opening the site with ?notrack=1 (short link /test) turns analytics off
+  // in this browser for good; ?notrack=0 turns it back on.
+  try {
+    var nt = new URLSearchParams(location.search).get('notrack');
+    if (nt === '1') localStorage.setItem('analytics-off', '1');
+    else if (nt === '0') localStorage.removeItem('analytics-off');
+    if (localStorage.getItem('analytics-off') === '1') return;
+  } catch (e) {}
   var KEY = 'analytics-consent', loaded = false, box;
 
   function getChoice() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }

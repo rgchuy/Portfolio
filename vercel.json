@@ -1,23 +1,109 @@
 {
   "redirects": [
-    { "source": "/cv", "destination": "/?utm_source=cv&utm_medium=pdf", "permanent": false },
-    { "source": "/es/cv", "destination": "/es/?utm_source=cv&utm_medium=pdf", "permanent": false },
-    { "source": "/pt/cv", "destination": "/pt/?utm_source=cv&utm_medium=pdf", "permanent": false },
-
-    { "source": "/in", "destination": "/?utm_source=linkedin&utm_medium=perfil", "permanent": false },
-    { "source": "/es/in", "destination": "/es/?utm_source=linkedin&utm_medium=perfil", "permanent": false },
-    { "source": "/pt/in", "destination": "/pt/?utm_source=linkedin&utm_medium=perfil", "permanent": false },
-
-    { "source": "/post", "destination": "/?utm_source=linkedin&utm_medium=post", "permanent": false },
-    { "source": "/es/post", "destination": "/es/?utm_source=linkedin&utm_medium=post", "permanent": false },
-    { "source": "/pt/post", "destination": "/pt/?utm_source=linkedin&utm_medium=post", "permanent": false },
-
-    { "source": "/msg", "destination": "/?utm_source=mensaje&utm_medium=directo", "permanent": false },
-    { "source": "/es/msg", "destination": "/es/?utm_source=mensaje&utm_medium=directo", "permanent": false },
-    { "source": "/pt/msg", "destination": "/pt/?utm_source=mensaje&utm_medium=directo", "permanent": false },
-
-    { "source": "/job", "destination": "/?utm_source=vacante&utm_medium=solicitud", "permanent": false },
-    { "source": "/es/job", "destination": "/es/?utm_source=vacante&utm_medium=solicitud", "permanent": false },
-    { "source": "/pt/job", "destination": "/pt/?utm_source=vacante&utm_medium=solicitud", "permanent": false }
+    {
+      "source": "/cv",
+      "destination": "/?utm_source=cv&utm_medium=pdf",
+      "permanent": false
+    },
+    {
+      "source": "/es/cv",
+      "destination": "/es/?utm_source=cv&utm_medium=pdf",
+      "permanent": false
+    },
+    {
+      "source": "/pt/cv",
+      "destination": "/pt/?utm_source=cv&utm_medium=pdf",
+      "permanent": false
+    },
+    {
+      "source": "/in",
+      "destination": "/?utm_source=linkedin&utm_medium=perfil",
+      "permanent": false
+    },
+    {
+      "source": "/es/in",
+      "destination": "/es/?utm_source=linkedin&utm_medium=perfil",
+      "permanent": false
+    },
+    {
+      "source": "/pt/in",
+      "destination": "/pt/?utm_source=linkedin&utm_medium=perfil",
+      "permanent": false
+    },
+    {
+      "source": "/post",
+      "destination": "/?utm_source=linkedin&utm_medium=post",
+      "permanent": false
+    },
+    {
+      "source": "/es/post",
+      "destination": "/es/?utm_source=linkedin&utm_medium=post",
+      "permanent": false
+    },
+    {
+      "source": "/pt/post",
+      "destination": "/pt/?utm_source=linkedin&utm_medium=post",
+      "permanent": false
+    },
+    {
+      "source": "/msg",
+      "destination": "/?utm_source=mensaje&utm_medium=directo",
+      "permanent": false
+    },
+    {
+      "source": "/es/msg",
+      "destination": "/es/?utm_source=mensaje&utm_medium=directo",
+      "permanent": false
+    },
+    {
+      "source": "/pt/msg",
+      "destination": "/pt/?utm_source=mensaje&utm_medium=directo",
+      "permanent": false
+    },
+    {
+      "source": "/job",
+      "destination": "/?utm_source=vacante&utm_medium=solicitud",
+      "permanent": false
+    },
+    {
+      "source": "/es/job",
+      "destination": "/es/?utm_source=vacante&utm_medium=solicitud",
+      "permanent": false
+    },
+    {
+      "source": "/pt/job",
+      "destination": "/pt/?utm_source=vacante&utm_medium=solicitud",
+      "permanent": false
+    },
+    {
+      "source": "/test",
+      "destination": "/?notrack=1",
+      "permanent": false
+    },
+    {
+      "source": "/test-off",
+      "destination": "/?notrack=0",
+      "permanent": false
+    },
+    {
+      "source": "/es/test",
+      "destination": "/es/?notrack=1",
+      "permanent": false
+    },
+    {
+      "source": "/es/test-off",
+      "destination": "/es/?notrack=0",
+      "permanent": false
+    },
+    {
+      "source": "/pt/test",
+      "destination": "/pt/?notrack=1",
+      "permanent": false
+    },
+    {
+      "source": "/pt/test-off",
+      "destination": "/pt/?notrack=0",
+      "permanent": false
+    }
   ]
 }
