@@ -1,8 +1,8 @@
 // UI strings set from script, in the page language (<html lang>): en at the root, es/ and pt/ folders.
 var I18N = {
-  en: { imageViewer: 'Image viewer', close: 'Close', zoomHint: 'Click the image to see it at full size', openMenus: 'Open menus', closeMenus: 'Close menus', emailCopied: 'Email copied: ', writeTo: 'Write to ', menu: 'Menu', skills: 'Skills', language: 'Language' },
-  es: { imageViewer: 'Visor de imágenes', close: 'Cerrar', zoomHint: 'Haz clic en la imagen para verla en tamaño completo', openMenus: 'Abrir menús', closeMenus: 'Cerrar menús', emailCopied: 'Correo copiado: ', writeTo: 'Escribe a ', menu: 'Menú', skills: 'Habilidades', language: 'Idioma' },
-  pt: { imageViewer: 'Visualizador de imagens', close: 'Fechar', zoomHint: 'Clique na imagem para vê-la em tamanho real', openMenus: 'Abrir menus', closeMenus: 'Fechar menus', emailCopied: 'E-mail copiado: ', writeTo: 'Escreva para ', menu: 'Menu', skills: 'Habilidades', language: 'Idioma' }
+  en: { imageViewer: 'Image viewer', close: 'Close', zoomHint: 'Click the image to see it at full size', openMenus: 'Open menus', closeMenus: 'Close menus', emailCopied: 'Email copied: ', writeTo: 'Write to ', menu: 'Menu', skills: 'Skills', language: 'Language', cookieTitle: 'Cookies', cookieText: 'This site uses analytics cookies (Google Analytics and Microsoft Clarity) to understand which projects are viewed most. Nothing is measured unless you accept.', cookieAccept: 'Accept', cookieDecline: 'Decline', cookieSettings: 'Cookie settings' },
+  es: { imageViewer: 'Visor de imágenes', close: 'Cerrar', zoomHint: 'Haz clic en la imagen para verla en tamaño completo', openMenus: 'Abrir menús', closeMenus: 'Cerrar menús', emailCopied: 'Correo copiado: ', writeTo: 'Escribe a ', menu: 'Menú', skills: 'Habilidades', language: 'Idioma', cookieTitle: 'Cookies', cookieText: 'Este sitio usa cookies de analítica (Google Analytics y Microsoft Clarity) para saber qué proyectos se ven más. No se mide nada a menos que aceptes.', cookieAccept: 'Aceptar', cookieDecline: 'Rechazar', cookieSettings: 'Configurar cookies' },
+  pt: { imageViewer: 'Visualizador de imagens', close: 'Fechar', zoomHint: 'Clique na imagem para vê-la em tamanho real', openMenus: 'Abrir menus', closeMenus: 'Fechar menus', emailCopied: 'E-mail copiado: ', writeTo: 'Escreva para ', menu: 'Menu', skills: 'Habilidades', language: 'Idioma', cookieTitle: 'Cookies', cookieText: 'Este site usa cookies de análise (Google Analytics e Microsoft Clarity) para entender quais projetos são mais vistos. Nada é medido a menos que você aceite.', cookieAccept: 'Aceitar', cookieDecline: 'Recusar', cookieSettings: 'Configurar cookies' }
 };
 var T = I18N[(document.documentElement.lang || 'en').slice(0, 2)] || I18N.en;
 
@@ -391,6 +391,7 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
   links.forEach(function (a) {
     a.addEventListener('click', function () {
       var addr = a.getAttribute('data-email') || a.getAttribute('data-copy-email');
+      if (window.trackEvent) window.trackEvent('copy_email');
       var done = function () { show(T.emailCopied + addr); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(addr).then(done, function () { show(T.writeTo + addr); });
@@ -555,4 +556,102 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
   window.addEventListener('resize', relayout);
   if (wide.addEventListener) wide.addEventListener('change', relayout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+})();
+
+
+// Analytics: Google Analytics 4 and Microsoft Clarity load only after the visitor accepts the cookie notice.
+// The choice is kept in localStorage; "Cookie settings" in the footer reopens the notice.
+// With no IDs set, nothing loads and no notice is shown.
+(function () {
+  var GA_ID = 'G-WFDE5DEJE1';     // Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ'
+  var CLARITY_ID = '';  // Microsoft Clarity project ID
+  if (!GA_ID && !CLARITY_ID) return;
+  var KEY = 'analytics-consent', loaded = false, box;
+
+  function getChoice() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function setChoice(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    if (GA_ID) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID);
+    }
+    if (CLARITY_ID) {
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      var c = document.createElement('script');
+      c.async = true;
+      c.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+      document.head.appendChild(c);
+      window.clarity('consent');
+    }
+  }
+
+  // Named events for the contact actions, so they are easy to find in both tools.
+  window.trackEvent = function (name) {
+    if (!loaded) return;
+    if (window.gtag) window.gtag('event', name);
+    if (window.clarity) window.clarity('event', name);
+  };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    if (/\.pdf($|\?)/i.test(a.getAttribute('href'))) window.trackEvent('cv_download');
+    else if (/linkedin\.com/i.test(a.href)) window.trackEvent('linkedin_click');
+  });
+
+  function choose(value) {
+    var was = getChoice();
+    setChoice(value);
+    hide();
+    if (value === 'granted') load();
+    // Turning measurement off after it was on: reload so the scripts are gone from the page.
+    else if (was === 'granted') location.reload();
+  }
+
+  function show() {
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'consent';
+      box.setAttribute('role', 'region');
+      box.setAttribute('aria-label', T.cookieTitle);
+      box.innerHTML = '<p class="consent__title"></p><p class="consent__text"></p>' +
+        '<div class="consent__actions"><button type="button" class="btn btn--soft" data-choice="denied"></button>' +
+        '<button type="button" class="btn btn--black" data-choice="granted"></button></div>';
+      box.querySelector('.consent__title').textContent = T.cookieTitle;
+      box.querySelector('.consent__text').textContent = T.cookieText;
+      box.querySelector('[data-choice="denied"]').textContent = T.cookieDecline;
+      box.querySelector('[data-choice="granted"]').textContent = T.cookieAccept;
+      box.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-choice]');
+        if (b) choose(b.getAttribute('data-choice'));
+      });
+      document.body.appendChild(box);
+    }
+    requestAnimationFrame(function () { box.classList.add('is-on'); });
+  }
+  function hide() { if (box) box.classList.remove('is-on'); }
+
+  // "Cookie settings" next to the copyright line.
+  var meta = document.querySelector('.footer .meta');
+  if (meta) {
+    var link = document.createElement('button');
+    link.type = 'button';
+    link.className = 'meta-link';
+    link.textContent = T.cookieSettings;
+    link.addEventListener('click', show);
+    meta.appendChild(document.createTextNode(' · '));
+    meta.appendChild(link);
+  }
+
+  var choice = getChoice();
+  if (choice === 'granted') load();
+  else if (choice !== 'denied') setTimeout(show, 1200);
 })();
