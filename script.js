@@ -564,7 +564,7 @@ document.querySelectorAll('.lang-switch a, .mobile-menu__langs a').forEach(funct
 // With no IDs set, nothing loads and no notice is shown.
 (function () {
   var GA_ID = 'G-WFDE5DEJE1';     // Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ'
-  var CLARITY_ID = '';  // Microsoft Clarity project ID
+  var CLARITY_ID = 'zi4vkw6lwb';  // Microsoft Clarity project ID
   if (!GA_ID && !CLARITY_ID) return;
   // Owner's test visits: opening the site with ?notrack=1 (short link /test) turns analytics off
   // in this browser for good; ?notrack=0 turns it back on.
