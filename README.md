@@ -251,4 +251,4 @@ After changing English text in a page:
 - 2026-11-21 — LinkedIn URL changed to linkedin.com/in/jesus-reyna-gonzalez-114232109 on every page and in the 3 CVs (link and visible text). The CV portfolio links keep their tracking: /cv, /es/cv, /pt/cv redirect with utm_source=cv&utm_medium=pdf (vercel.json).
 - 2026-11-21 — CVs show the tracked portfolio address in the visible text too (jreynaportfolio.vercel.app/cv, /es/cv, /pt/cv), so visits are attributed to the CV even when the address is copied or typed, or the CV is read as plain text by an ATS.
 - 2026-11-23 — Microsoft Clarity added (project zi4vkw6lwb): heatmaps and session recordings, loaded with GA4 only after the visitor accepts the cookie notice.
-- 2026-11-26 — CVs (EN/ES/PT) add the Diploma in Web Accessibility (Alison, 2026) under a renamed "Education, Certifications & Languages" section; regenerated from the HTML sources with the same layout.
+- 2026-11-26 — CVs (EN/ES/PT) add the Diploma in Web Accessibility (Alison, 2026; WCAG 2.2) under a renamed "Education, Certifications & Languages" section; regenerated from the HTML sources with the same layout.
