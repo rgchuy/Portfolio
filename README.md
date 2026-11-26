@@ -254,3 +254,4 @@ After changing English text in a page:
 - 2026-11-26 — CVs (EN/ES/PT) add the Diploma in Web Accessibility (Alison, 2026; WCAG 2.2) under a renamed "Education, Certifications & Languages" section; regenerated from the HTML sources with the same layout.
 - 2026-11-26 — CVs: first Revelo bullet rewritten (design systems documented as Markdown .md files + Claude Artifacts in the design workflow with Claude Code), EN/ES/PT.
 - 2026-11-26 — CVs: percentages written as 50%–70% (summary and first Revelo bullet), EN/ES/PT.
+- 2026-11-26 — Skills replaced on the home page (Design / Research & Testing / AI / Tools, EN/ES/PT) and in the CVs; ES/PT CVs use slightly tighter section spacing to stay on one page.
